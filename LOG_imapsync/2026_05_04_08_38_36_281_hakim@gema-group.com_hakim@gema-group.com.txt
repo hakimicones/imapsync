@@ -1,0 +1,310 @@
+Here is imapsync 2.229 on host icones-soft.com, a linux system with 1.1/31.0 free GiB of RAM, 40.65% used by processes.
+with Perl 5.38.2 and Mail::IMAPClient 3.43
+Transfer started at Monday 04 May 2026-05-04 08:38:36 +0000 UTC
+PID is 1485308 my PPID is 1485307
+Log file is LOG_imapsync/2026_05_04_08_38_36_281_hakim@gema-group.com_hakim@gema-group.com.txt ( to change it, use --logfile path ; or use --nolog to turn off logging )
+Load is 0.31 0.52 0.54 1/723 on 8 cores
+Current directory is /opt/imapsync
+Real user id is root (uid 0)
+Effective user id is root (euid 0)
+$RCSfile: imapsync,v $ $Revision: 2.229 $ $Date: 2022/09/14 18:08:24 $ 
+Command line used, run by /usr/bin/perl:
+/usr/local/bin/imapsync --automap --host1 mail.gema-group.com --user1 hakim@gema-group.com --password1 MASKED --host2 mail2.gema-group.com --user2 hakim@gema-group.com --password2 MASKED --useuid --nofoldersizes
+Temp directory is /tmp ( to change it use --tmpdir dirpath )
+kill -QUIT 1485308 # special behavior: call to sub catch_exit
+kill -TERM 1485308 # special behavior: call to sub catch_exit
+kill -INT 1485308 # special behavior: call to sub catch_reconnect
+kill -HUP 1485308 # special behavior: call to sub catch_print
+kill -USR1 1485308 # special behavior: call to sub toggle_sleep
+File /tmp/imapsync.pid does not exist
+PID file is /tmp/imapsync.pid ( to change it, use --pidfile filepath ; to avoid it use --pidfile "" )
+Writing my PID 1485308 in /tmp/imapsync.pid
+Writing also my logfile name in /tmp/imapsync.pid : LOG_imapsync/2026_05_04_08_38_36_281_hakim@gema-group.com_hakim@gema-group.com.txt
+Modules version list ( use --no-modulesversion to turn off printing this Perl modules list ):
+Authen::NTLM         1.09
+CGI                  4.71
+Compress::Zlib       2.204
+Crypt::OpenSSL::RSA  0.33
+Data::Uniqid         0.12
+Digest::HMAC_MD5     1.04
+Digest::HMAC_SHA1    1.04
+Digest::MD5          2.58_01
+Encode               3.19
+Encode::IMAPUTF7     1.07
+File::Copy::Recursive 0.45
+File::Spec           3.88
+Getopt::Long         2.54
+HTML::Entities       3.81
+IO::Socket           1.52
+IO::Socket::INET     1.52
+IO::Socket::INET6    2.73
+IO::Socket::IP       0.4101
+IO::Socket::SSL      2.085
+IO::Tee              0.65
+JSON                 4.10
+JSON::WebToken       0.10
+LWP                  6.76
+MIME::Base64         3.16_01
+Mail::IMAPClient     3.43
+Net::Ping            2.76
+Net::SSLeay          1.94
+Term::ReadKey        2.38
+Test::MockObject     1.20200122
+Time::HiRes          1.9775
+URI::Escape          5.27
+Unicode::String      2.10
+
+Info: will resync flags for already transferred messages. Use --noresyncflags to not resync flags.
+Host1: probing ssl on port 993 ( use --nosslcheck to avoid this ssl probe ) 
+Host1: sslcheck detected open ssl port 993 so turning ssl on (use --nossl1 --notls1 to turn off SSL and TLS wizardry)
+Host2: probing ssl on port 993 ( use --nosslcheck to avoid this ssl probe ) 
+Host2: sslcheck detected open ssl port 993 so turning ssl on (use --nossl2 --notls2 to turn off SSL and TLS wizardry)
+SSL debug mode level is --debugssl 1 (can be set from 0 meaning no debug to 4 meaning max debug)
+Host1: SSL default mode is like --sslargs1 "SSL_verify_mode=0", meaning for host1 SSL_VERIFY_NONE, ie, do not check the server certificate.
+Host1: Use --sslargs1 SSL_verify_mode=1 to have SSL_VERIFY_PEER, ie, check the server certificate. of host1
+Host2: SSL default mode is like --sslargs2 "SSL_verify_mode=0", meaning for host2 SSL_VERIFY_NONE, ie, do not check the server certificate.
+Host2: Use --sslargs2 SSL_verify_mode=1 to have SSL_VERIFY_PEER, ie, check the server certificate. of host2
+Info: turned ON syncinternaldates, will set the internal dates (arrival dates) on host2 same as host1.
+Host1: will try to use LOGIN authentication on host1
+Host2: will try to use LOGIN authentication on host2
+Host1: imap connection timeout is 120 seconds
+Host2: imap connection timeout is 120 seconds
+Host1: imap connection keepalive is on on host1. Use --nokeepalive1 to disable it.
+Host2: imap connection keepalive is on on host2. Use --nokeepalive2 to disable it.
+Host1: IMAP server [mail.gema-group.com] port [993] user [hakim@gema-group.com]
+Host2: IMAP server [mail2.gema-group.com] port [993] user [hakim@gema-group.com]
+Host1: connecting and login on host1 [mail.gema-group.com] port [993] with user [hakim@gema-group.com]
+Host1 IP address: 102.220.31.59 Local IP address: 147.135.255.36
+Host1 banner: * OK [CAPABILITY IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5] Dovecot ready.
+Host1 capability before authentication: IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH
+Host1: mail.gema-group.com says it has CAPABILITY for AUTHENTICATE LOGIN
+Host1: success login on [mail.gema-group.com] with user [hakim@gema-group.com] auth [LOGIN] or [LOGIN]
+Host2: connecting and login on host2 [mail2.gema-group.com] port [993] with user [hakim@gema-group.com]
+Host2 IP address: 147.135.255.36 Local IP address: 147.135.255.36
+Host2 banner: * OK [CAPABILITY IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5] Dovecot ready.
+Host2 capability before authentication: IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH
+Host2: mail2.gema-group.com says it has CAPABILITY for AUTHENTICATE LOGIN
+Host2: success login on [mail2.gema-group.com] with user [hakim@gema-group.com] auth [LOGIN] or [LOGIN]
+Host1: state Authenticated
+Host2: state Authenticated
+Host1 capability once authenticated: IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE REPLACE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW SPECIAL-USE STATUS=SIZE SAVEDATE COMPRESS=DEFLATE INPROGRESS NOTIFY LITERAL+ QUOTA THREAD I18NLEVEL CONTEXT SNIPPET PREVIEW STATUS COMPRESS
+Host2 capability once authenticated: IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE REPLACE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW SPECIAL-USE STATUS=SIZE SAVEDATE COMPRESS=DEFLATE INPROGRESS NOTIFY LITERAL+ QUOTA THREAD I18NLEVEL CONTEXT SNIPPET PREVIEW STATUS COMPRESS
+Host1: found ID capability. Sending/receiving ID, presented in raw IMAP for now.
+In order to avoid sending/receiving ID, use option --noid
+Sending: 4 ID ("name" "imapsync" "version" "2.229" "os" "linux" "vendor" "Gilles LAMIRAL" "support-url" "https://imapsync.lamiral.info/" "date" "14-Sep-2022 18:08:24 +0000" "side" "host1")
+Sent 181 bytes
+Read: 	* ID ("name" "Dovecot")
+  	4 OK ID completed (0.001 + 0.000 secs).
+Host2: found ID capability. Sending/receiving ID, presented in raw IMAP for now.
+In order to avoid sending/receiving ID, use option --noid
+Sending: 4 ID ("name" "imapsync" "version" "2.229" "os" "linux" "vendor" "Gilles LAMIRAL" "support-url" "https://imapsync.lamiral.info/" "date" "14-Sep-2022 18:08:24 +0000" "side" "host2")
+Sent 181 bytes
+Read: 	* ID ("name" "Dovecot")
+  	4 OK ID completed (0.001 + 0.000 secs).
+
+Host2: QUOTA capability found, presented in raw IMAP on next lines
+Sending: 5 GETQUOTAROOT INBOX
+Sent 22 bytes
+Read: 	5 OK No quota (0.001 + 0.000 secs).
+
+Host2: Quota current storage is 0 bytes. Limit is 0 bytes. So 0 % full
+Host1: Compression is off. Use --compress1 to allow compression on host1
+Host2: Compression is off. Use --compress2 to allow compression on host2
+Host1: found 5 folders.
+Host2: found 5 folders.
+Host1: guessing separator from folder listing: [.]
+Host1: separator given by NAMESPACE: [.]
+Host2: guessing separator from folder listing: [.]
+Host2: separator given by NAMESPACE: [.]
+Host1: guessing prefix from folder listing: [INBOX.]
+Host1: prefix given by NAMESPACE: [INBOX.]
+Host2: guessing prefix from folder listing: [INBOX.]
+Host2: prefix given by NAMESPACE: [INBOX.]
+Host1: separator and prefix: [.][INBOX.]
+Host2: separator and prefix: [.][INBOX.]
+Including all folders found by default. Use --subscribed or --folder or --folderrec or --include to select specific folders. Use --exclude to unselect specific folders.
+Host1: Checking wanted folders exist. Use --nocheckfoldersexist to avoid this check (shared of public namespace targeted).
+Host1: Checking wanted folders are selectable. Use --nocheckselectable to avoid this check.
+Turned on automapping folders ( use --noautomap to turn off automapping )
+Host1: special INBOX.Spam           = \Junk
+Host1: special INBOX.Sent           = \Sent
+Host1: special INBOX.Trash          = \Trash
+Host1: special INBOX.Drafts         = \Drafts
+
+Host2: special INBOX.Sent           = \Sent
+Host2: special INBOX.Drafts         = \Drafts
+Host2: special INBOX.Spam           = \Junk
+Host2: special INBOX.Trash          = \Trash
+
+
+++++ Listing folders
+All foldernames are presented between brackets like [X] where X is the foldername.
+When a foldername contains non-ASCII characters it is presented in the form
+[X] = [Y] where
+X is the imap foldername you have to use in command line options and
+Y is the utf8 output just printed for convenience, to recognize it.
+
+Host1: folders list (first the raw imap format then the [X] = [Y]):
+* LIST (\HasChildren) "." INBOX
+* LIST (\HasNoChildren \UnMarked \Junk) "." INBOX.Spam
+* LIST (\HasNoChildren \UnMarked \Sent) "." INBOX.Sent
+* LIST (\HasNoChildren \UnMarked \Trash) "." INBOX.Trash
+* LIST (\HasNoChildren \UnMarked \Drafts) "." INBOX.Drafts
+15 OK List completed (0.001 + 0.000 secs).
+
+[INBOX]
+[INBOX.Drafts]
+[INBOX.Sent]
+[INBOX.Spam]
+[INBOX.Trash]
+
+Host2: folders list (first the raw imap format then the [X] = [Y]):
+* LIST (\HasChildren) "." INBOX
+* LIST (\HasNoChildren \UnMarked \Sent) "." INBOX.Sent
+* LIST (\HasNoChildren \UnMarked \Drafts) "." INBOX.Drafts
+* LIST (\HasNoChildren \UnMarked \Junk) "." INBOX.Spam
+* LIST (\HasNoChildren \UnMarked \Trash) "." INBOX.Trash
+11 OK List completed (0.001 + 0.000 secs).
+
+[INBOX]
+[INBOX.Drafts]
+[INBOX.Sent]
+[INBOX.Spam]
+[INBOX.Trash]
+
+Folders mapping from --automap feature (use --f1f2 to override any mapping):
+[INBOX.Trash]                            -> [INBOX.Trash]                           
+[INBOX.Sent]                             -> [INBOX.Sent]                            
+[INBOX.Drafts]                           -> [INBOX.Drafts]                          
+[INBOX.Spam]                             -> [INBOX.Spam]                            
+
+Checking SEARCH ALL works on both accounts. To avoid that check, use --nochecknoabletosearch
+Host1: checking if SEARCH ALL works on INBOX
+Host1: folder [INBOX] has 24 messages mentioned by SELECT
+Host1: folder [INBOX] has 24 messages found by SEARCH ALL
+Host1: folder [INBOX] has the same messages count (24) by SELECT and SEARCH ALL
+Host2: checking if SEARCH ALL works on INBOX
+Host2: folder [INBOX] has 0 messages mentioned by SELECT
+Host2: folder [INBOX] has 0 messages found by SEARCH ALL
+Host2: folder [INBOX] has the same messages count (0) by SELECT and SEARCH ALL
+Good! SEARCH ALL works on both accounts.
+++++ Looping on each one of 5 folders to sync
+Folder     1/5 [INBOX]                             -> [INBOX]                            
+Host1: folder [INBOX] has 24 messages in total (mentioned by SELECT)
+Host2: folder [INBOX] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX] permanentflags: 
+Host1: folder [INBOX] considering 24 messages
+Host2: folder [INBOX] considering 0 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/hakim@gema-group.com/mail2.gema-group.com/hakim@gema-group.com/INBOX/INBOX ( 114 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX] selected 24 messages, duplicates 0
+Host2: folder [INBOX] selected 0 messages, duplicates 0
+msg INBOX/1 {6058}            copied to INBOX/1          2.12 msgs/s  12.523 KiB/s 5.916 KiB copied 
+msg INBOX/2 {10866}           copied to INBOX/2          2.48 msgs/s  20.455 KiB/s 16.527 KiB copied 
+msg INBOX/3 {50591}           copied to INBOX/3          2.89 msgs/s  63.563 KiB/s 65.933 KiB copied 
+msg INBOX/4 {135941}          copied to INBOX/4          3.09 msgs/s  153.303 KiB/s 198.688 KiB copied 
+msg INBOX/5 {29709}           copied to INBOX/5          3.31 msgs/s  150.764 KiB/s 227.700 KiB copied 
+msg INBOX/6 {24175}           copied to INBOX/6          2.98 msgs/s  124.713 KiB/s 251.309 KiB copied 
+msg INBOX/7 {30875}           copied to INBOX/7          2.35 msgs/s  94.571 KiB/s 281.460 KiB copied 
+msg INBOX/8 {25357}           copied to INBOX/8          2.45 msgs/s  93.710 KiB/s 306.223 KiB copied 
+msg INBOX/9 {54754}           copied to INBOX/9          2.57 msgs/s  102.709 KiB/s 359.693 KiB copied 
+msg INBOX/10 {40111}          copied to INBOX/10         2.71 msgs/s  107.926 KiB/s 398.864 KiB copied 
+msg INBOX/11 {57078}          copied to INBOX/11         2.76 msgs/s  114.100 KiB/s 454.604 KiB copied 
+msg INBOX/12 {3473}           copied to INBOX/12         2.90 msgs/s  110.532 KiB/s 457.996 KiB copied 
+msg INBOX/13 {3473}           copied to INBOX/13         3.01 msgs/s  106.940 KiB/s 461.388 KiB copied 
+msg INBOX/14 {54877}          copied to INBOX/14         3.07 msgs/s  112.759 KiB/s 514.979 KiB copied 
+msg INBOX/15 {54178}          copied to INBOX/15         3.13 msgs/s  118.355 KiB/s 567.887 KiB copied 
+msg INBOX/16 {38581}          copied to INBOX/16         3.09 msgs/s  116.995 KiB/s 605.563 KiB copied 
+msg INBOX/17 {37834}          copied to INBOX/17         3.18 msgs/s  120.054 KiB/s 642.511 KiB copied 
+msg INBOX/18 {53812}          copied to INBOX/18         3.23 msgs/s  124.673 KiB/s 695.062 KiB copied 
+msg INBOX/19 {39221}          copied to INBOX/19         3.27 msgs/s  126.384 KiB/s 733.363 KiB copied 
+msg INBOX/20 {54412}          copied to INBOX/20         3.31 msgs/s  130.133 KiB/s 786.500 KiB copied 
+msg INBOX/21 {64880}          copied to INBOX/21         3.34 msgs/s  135.343 KiB/s 849.859 KiB copied 
+msg INBOX/22 {39064}          copied to INBOX/22         3.41 msgs/s  137.767 KiB/s 888.008 KiB copied 
+msg INBOX/23 {53342}          copied to INBOX/23         3.44 msgs/s  140.717 KiB/s 940.100 KiB copied 
+msg INBOX/24 {3103}           copied to INBOX/24         3.49 msgs/s  137.171 KiB/s 943.130 KiB copied 
+Folder     2/5 [INBOX.Drafts]                      -> [INBOX.Drafts]                     
+Host1: folder [INBOX.Drafts] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Drafts] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Drafts] permanentflags: 
+Host1: folder [INBOX.Drafts] considering 0 messages
+Host2: folder [INBOX.Drafts] considering 0 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/hakim@gema-group.com/mail2.gema-group.com/hakim@gema-group.com/INBOX/Drafts/INBOX/Drafts ( 128 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Drafts] selected 0 messages, duplicates 0
+Host2: folder [INBOX.Drafts] selected 0 messages, duplicates 0
+Folder     3/5 [INBOX.Sent]                        -> [INBOX.Sent]                       
+Host1: folder [INBOX.Sent] has 10 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Sent] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Sent] permanentflags: 
+Host1: folder [INBOX.Sent] considering 10 messages
+Host2: folder [INBOX.Sent] considering 0 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/hakim@gema-group.com/mail2.gema-group.com/hakim@gema-group.com/INBOX/Sent/INBOX/Sent ( 124 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Sent] selected 10 messages, duplicates 0
+Host2: folder [INBOX.Sent] selected 0 messages, duplicates 0
+msg INBOX.Sent/1 {371}             copied to INBOX.Sent/1          2.72 msgs/s  102.608 KiB/s 943.492 KiB copied 
+msg INBOX.Sent/2 {634}             copied to INBOX.Sent/2          2.75 msgs/s  99.858 KiB/s 944.111 KiB copied 
+msg INBOX.Sent/3 {333}             copied to INBOX.Sent/3          2.73 msgs/s  95.342 KiB/s 944.437 KiB copied 
+msg INBOX.Sent/4 {319}             copied to INBOX.Sent/4          2.75 msgs/s  92.726 KiB/s 944.748 KiB copied 
+msg INBOX.Sent/5 {340}             copied to INBOX.Sent/5          2.78 msgs/s  90.590 KiB/s 945.080 KiB copied 
+msg INBOX.Sent/6 {25821193}        copied to INBOX.Sent/6          1.30 msgs/s  1.109 MiB/s 25.548 MiB copied 
+msg INBOX.Sent/7 {25821193}        copied to INBOX.Sent/7          1.10 msgs/s  1.788 MiB/s 50.173 MiB copied 
+msg INBOX.Sent/8 {332}             copied to INBOX.Sent/8          1.13 msgs/s  1.769 MiB/s 50.173 MiB copied 
+msg INBOX.Sent/9 {332}             copied to INBOX.Sent/9          1.15 msgs/s  1.747 MiB/s 50.174 MiB copied 
+msg INBOX.Sent/10 {337}            copied to INBOX.Sent/10         1.17 msgs/s  1.724 MiB/s 50.174 MiB copied 
+Folder     4/5 [INBOX.Spam]                        -> [INBOX.Spam]                       
+Host1: folder [INBOX.Spam] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Spam] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Spam] permanentflags: 
+Host1: folder [INBOX.Spam] considering 0 messages
+Host2: folder [INBOX.Spam] considering 0 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/hakim@gema-group.com/mail2.gema-group.com/hakim@gema-group.com/INBOX/Spam/INBOX/Spam ( 124 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Spam] selected 0 messages, duplicates 0
+Host2: folder [INBOX.Spam] selected 0 messages, duplicates 0
+Folder     5/5 [INBOX.Trash]                       -> [INBOX.Trash]                      
+Host1: folder [INBOX.Trash] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Trash] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Trash] permanentflags: 
+Host1: folder [INBOX.Trash] considering 0 messages
+Host2: folder [INBOX.Trash] considering 0 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/hakim@gema-group.com/mail2.gema-group.com/hakim@gema-group.com/INBOX/Trash/INBOX/Trash ( 126 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Trash] selected 0 messages, duplicates 0
+Host2: folder [INBOX.Trash] selected 0 messages, duplicates 0
+++++ End looping on each folder
+++++ Statistics
+Transfer started on                     : Monday 04 May 2026-05-04 08:38:36 +0000 UTC
+Transfer ended on                       : Monday 04 May 2026-05-04 08:39:14 +0000 UTC
+Transfer time                           : 38.5 sec
+Folders synced                          : 5/5 synced
+Messages transferred                    : 34 
+Messages skipped                        : 0
+Messages found duplicate on host1       : 0
+Messages found duplicate on host2       : 0
+Messages found crossduplicate on host2  : 0
+Messages void (noheader) on host1       : 0  
+Messages void (noheader) on host2       : 0
+Messages found in host1 not in host2    : 0 messages
+Messages found in host2 not in host1    : 0 messages
+Messages deleted on host1               : 0
+Messages deleted on host2               : 0
+Total bytes transferred                 : 52611149 (50.174 MiB)
+Total bytes skipped                     : 0 (0.000 KiB)
+Message rate                            : 0.9 messages/s
+Average bandwidth rate                  : 1335.0 KiB/s
+Reconnections to host1                  : 0
+Reconnections to host2                  : 0
+Memory consumption at the end           : 205.0 MiB (*time 2.2 MiB*h) (started with 161.7 MiB)
+Load end is                             : 0.30 0.49 0.53 1/730 on 8 cores
+CPU time and %cpu                       : 2.53 sec 6.6 %cpu 0.8 %allcpus
+Biggest message transferred             : 25821193 bytes (24.625 MiB)
+Memory/biggest message ratio            : 8.3
+The sync is strict, all 0 identified messages in host2 are on host1.
+Detected 0 errors
+Check if a new imapsync release is available by adding --releasecheck
+Homepage: https://imapsync.lamiral.info/
+Exiting with return value 0 (EX_OK: successful termination) 0/50 nb_errors/max_errors PID 1485308
+Removing pidfile /tmp/imapsync.pid
+Log file is LOG_imapsync/2026_05_04_08_38_36_281_hakim@gema-group.com_hakim@gema-group.com.txt ( to change it, use --logfile filepath ; or use --nolog to turn off logging )

@@ -1,0 +1,38 @@
+<?php
+$host = "localhost"; 
+$dbname = "mails_bd";
+$user = "mails_bd";
+$pass = "A147z258e369=";
+
+try {
+    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    die("Erreur connexion DB: " . $e->getMessage());
+}
+
+$sql = "SELECT id, emails, password FROM emails WHERE etat=1";
+$stmt = $pdo->query($sql);
+
+foreach ($stmt as $row) {
+    $email = $row['emails'];
+    $password = $row['password'];
+
+    // Commande imapsync avec options pour éviter les problèmes de taille et doublons
+    $cmd = "imapsync --automap  --host1 mail.gema-group.com --user1 $email --password1 '$password' " .
+           "--host2 mail2.gema-group.com --user2 $email --password2 '$password' " .
+           "--maxsize 0 --useuid --nofoldersizes";
+
+    exec($cmd, $output, $return_var);
+
+    // Préparer message
+    $msg = implode("\n", $output);
+
+    // Insérer dans sync_logs
+    $insert = $pdo->prepare("INSERT INTO sync_logs (email, error_code, error_message) VALUES (?, ?, ?)");
+    $insert->execute([$email, $return_var, $msg]);
+
+    // Affichage console pour suivi
+    echo "Compte: $email | Code: $return_var\n";
+}
+?>

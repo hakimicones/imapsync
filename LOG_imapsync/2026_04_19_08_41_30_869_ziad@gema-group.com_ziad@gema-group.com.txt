@@ -1,0 +1,860 @@
+Here is imapsync 2.229 on host icones-soft.com, a linux system with 0.7/31.0 free GiB of RAM, 17.31% used by processes.
+with Perl 5.38.2 and Mail::IMAPClient 3.43
+Transfer started at Sunday 19 April 2026-04-19 08:41:30 +0000 UTC
+PID is 518840 my PPID is 518839
+Log file is LOG_imapsync/2026_04_19_08_41_30_869_ziad@gema-group.com_ziad@gema-group.com.txt ( to change it, use --logfile path ; or use --nolog to turn off logging )
+Load is 0.28 0.27 0.31 1/648 on 8 cores
+Current directory is /opt/imapsync
+Real user id is root (uid 0)
+Effective user id is root (euid 0)
+$RCSfile: imapsync,v $ $Revision: 2.229 $ $Date: 2022/09/14 18:08:24 $ 
+Command line used, run by /usr/bin/perl:
+/usr/local/bin/imapsync --host1 mail.gema-group.com --user1 ziad@gema-group.com --password1 MASKED --host2 mail2.gema-group.com --user2 ziad@gema-group.com --password2 MASKED --maxsize 0 --useuid --nofoldersizes
+Temp directory is /tmp ( to change it use --tmpdir dirpath )
+kill -QUIT 518840 # special behavior: call to sub catch_exit
+kill -TERM 518840 # special behavior: call to sub catch_exit
+kill -INT 518840 # special behavior: call to sub catch_reconnect
+kill -HUP 518840 # special behavior: call to sub catch_print
+kill -USR1 518840 # special behavior: call to sub toggle_sleep
+File /tmp/imapsync.pid does not exist
+PID file is /tmp/imapsync.pid ( to change it, use --pidfile filepath ; to avoid it use --pidfile "" )
+Writing my PID 518840 in /tmp/imapsync.pid
+Writing also my logfile name in /tmp/imapsync.pid : LOG_imapsync/2026_04_19_08_41_30_869_ziad@gema-group.com_ziad@gema-group.com.txt
+Modules version list ( use --no-modulesversion to turn off printing this Perl modules list ):
+Authen::NTLM         1.09
+CGI                  4.71
+Compress::Zlib       2.204
+Crypt::OpenSSL::RSA  0.33
+Data::Uniqid         0.12
+Digest::HMAC_MD5     1.04
+Digest::HMAC_SHA1    1.04
+Digest::MD5          2.58_01
+Encode               3.19
+Encode::IMAPUTF7     1.07
+File::Copy::Recursive 0.45
+File::Spec           3.88
+Getopt::Long         2.54
+HTML::Entities       3.81
+IO::Socket           1.52
+IO::Socket::INET     1.52
+IO::Socket::INET6    2.73
+IO::Socket::IP       0.4101
+IO::Socket::SSL      2.085
+IO::Tee              0.65
+JSON                 4.10
+JSON::WebToken       0.10
+LWP                  6.76
+MIME::Base64         3.16_01
+Mail::IMAPClient     3.43
+Net::Ping            2.76
+Net::SSLeay          1.94
+Term::ReadKey        2.38
+Test::MockObject     1.20200122
+Time::HiRes          1.9775
+URI::Escape          5.27
+Unicode::String      2.10
+
+Info: will resync flags for already transferred messages. Use --noresyncflags to not resync flags.
+Host1: probing ssl on port 993 ( use --nosslcheck to avoid this ssl probe ) 
+Host1: sslcheck detected open ssl port 993 so turning ssl on (use --nossl1 --notls1 to turn off SSL and TLS wizardry)
+Host2: probing ssl on port 993 ( use --nosslcheck to avoid this ssl probe ) 
+Host2: sslcheck detected open ssl port 993 so turning ssl on (use --nossl2 --notls2 to turn off SSL and TLS wizardry)
+SSL debug mode level is --debugssl 1 (can be set from 0 meaning no debug to 4 meaning max debug)
+Host1: SSL default mode is like --sslargs1 "SSL_verify_mode=0", meaning for host1 SSL_VERIFY_NONE, ie, do not check the server certificate.
+Host1: Use --sslargs1 SSL_verify_mode=1 to have SSL_VERIFY_PEER, ie, check the server certificate. of host1
+Host2: SSL default mode is like --sslargs2 "SSL_verify_mode=0", meaning for host2 SSL_VERIFY_NONE, ie, do not check the server certificate.
+Host2: Use --sslargs2 SSL_verify_mode=1 to have SSL_VERIFY_PEER, ie, check the server certificate. of host2
+Info: turned ON syncinternaldates, will set the internal dates (arrival dates) on host2 same as host1.
+Host1: will try to use LOGIN authentication on host1
+Host2: will try to use LOGIN authentication on host2
+Host1: imap connection timeout is 120 seconds
+Host2: imap connection timeout is 120 seconds
+Host1: imap connection keepalive is on on host1. Use --nokeepalive1 to disable it.
+Host2: imap connection keepalive is on on host2. Use --nokeepalive2 to disable it.
+Host1: IMAP server [mail.gema-group.com] port [993] user [ziad@gema-group.com]
+Host2: IMAP server [mail2.gema-group.com] port [993] user [ziad@gema-group.com]
+Host1: connecting and login on host1 [mail.gema-group.com] port [993] with user [ziad@gema-group.com]
+Host1 IP address: 102.220.31.59 Local IP address: 147.135.255.36
+Host1 banner: * OK [CAPABILITY IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5] Dovecot ready.
+Host1 capability before authentication: IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH
+Host1: mail.gema-group.com says it has CAPABILITY for AUTHENTICATE LOGIN
+Host1: success login on [mail.gema-group.com] with user [ziad@gema-group.com] auth [LOGIN] or [LOGIN]
+Host2: connecting and login on host2 [mail2.gema-group.com] port [993] with user [ziad@gema-group.com]
+Host2 IP address: 147.135.255.36 Local IP address: 147.135.255.36
+Host2 banner: * OK [CAPABILITY IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5] Dovecot ready.
+Host2 capability before authentication: IMAP4rev1 LOGIN-REFERRALS ID ENABLE IDLE SASL-IR LITERAL+ AUTH=PLAIN AUTH=LOGIN AUTH=DIGEST-MD5 AUTH=CRAM-MD5 AUTH
+Host2: mail2.gema-group.com says it has CAPABILITY for AUTHENTICATE LOGIN
+Host2: success login on [mail2.gema-group.com] with user [ziad@gema-group.com] auth [LOGIN] or [LOGIN]
+Host1: state Authenticated
+Host2: state Authenticated
+Host1 capability once authenticated: IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE REPLACE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW SPECIAL-USE STATUS=SIZE SAVEDATE COMPRESS=DEFLATE INPROGRESS NOTIFY LITERAL+ QUOTA THREAD I18NLEVEL CONTEXT SNIPPET PREVIEW STATUS COMPRESS
+Host2 capability once authenticated: IMAP4rev1 SASL-IR LOGIN-REFERRALS ID ENABLE IDLE SORT SORT=DISPLAY THREAD=REFERENCES THREAD=REFS THREAD=ORDEREDSUBJECT MULTIAPPEND URL-PARTIAL CATENATE UNSELECT CHILDREN NAMESPACE UIDPLUS LIST-EXTENDED I18NLEVEL=1 CONDSTORE QRESYNC ESEARCH ESORT SEARCHRES WITHIN CONTEXT=SEARCH LIST-STATUS BINARY MOVE REPLACE SNIPPET=FUZZY PREVIEW=FUZZY PREVIEW SPECIAL-USE STATUS=SIZE SAVEDATE COMPRESS=DEFLATE INPROGRESS NOTIFY LITERAL+ QUOTA THREAD I18NLEVEL CONTEXT SNIPPET PREVIEW STATUS COMPRESS
+Host1: found ID capability. Sending/receiving ID, presented in raw IMAP for now.
+In order to avoid sending/receiving ID, use option --noid
+Sending: 4 ID ("name" "imapsync" "version" "2.229" "os" "linux" "vendor" "Gilles LAMIRAL" "support-url" "https://imapsync.lamiral.info/" "date" "14-Sep-2022 18:08:24 +0000" "side" "host1")
+Sent 181 bytes
+Read: 	* ID ("name" "Dovecot")
+  	4 OK ID completed (0.001 + 0.000 secs).
+Host2: found ID capability. Sending/receiving ID, presented in raw IMAP for now.
+In order to avoid sending/receiving ID, use option --noid
+Sending: 4 ID ("name" "imapsync" "version" "2.229" "os" "linux" "vendor" "Gilles LAMIRAL" "support-url" "https://imapsync.lamiral.info/" "date" "14-Sep-2022 18:08:24 +0000" "side" "host2")
+Sent 181 bytes
+Read: 	* ID ("name" "Dovecot")
+  	4 OK ID completed (0.001 + 0.000 secs).
+
+Host2: QUOTA capability found, presented in raw IMAP on next lines
+Sending: 5 GETQUOTAROOT INBOX
+Sent 22 bytes
+Read: 	5 OK No quota (0.001 + 0.000 secs).
+
+Host2: Quota current storage is 0 bytes. Limit is 0 bytes. So 0 % full
+Host1: Compression is off. Use --compress1 to allow compression on host1
+Host2: Compression is off. Use --compress2 to allow compression on host2
+Host1: found 6 folders.
+Host2: found 6 folders.
+Host1: guessing separator from folder listing: [.]
+Host1: separator given by NAMESPACE: [.]
+Host2: guessing separator from folder listing: [.]
+Host2: separator given by NAMESPACE: [.]
+Host1: guessing prefix from folder listing: [INBOX.]
+Host1: prefix given by NAMESPACE: [INBOX.]
+Host2: guessing prefix from folder listing: [INBOX.]
+Host2: prefix given by NAMESPACE: [INBOX.]
+Host1: separator and prefix: [.][INBOX.]
+Host2: separator and prefix: [.][INBOX.]
+Including all folders found by default. Use --subscribed or --folder or --folderrec or --include to select specific folders. Use --exclude to unselect specific folders.
+Host1: Checking wanted folders exist. Use --nocheckfoldersexist to avoid this check (shared of public namespace targeted).
+Host1: Checking wanted folders are selectable. Use --nocheckselectable to avoid this check.
+Turned off automapping folders ( use --automap to turn on automapping )
+
+++++ Listing folders
+All foldernames are presented between brackets like [X] where X is the foldername.
+When a foldername contains non-ASCII characters it is presented in the form
+[X] = [Y] where
+X is the imap foldername you have to use in command line options and
+Y is the utf8 output just printed for convenience, to recognize it.
+
+Host1: folders list (first the raw imap format then the [X] = [Y]):
+* LIST (\HasChildren) "." INBOX
+* LIST (\HasNoChildren \UnMarked) "." INBOX.Envoy&AOk-
+* LIST (\HasNoChildren \UnMarked \Junk) "." INBOX.Spam
+* LIST (\HasNoChildren \UnMarked \Sent) "." INBOX.Sent
+* LIST (\HasNoChildren \UnMarked \Trash) "." INBOX.Trash
+* LIST (\HasNoChildren \UnMarked \Drafts) "." INBOX.Drafts
+15 OK List completed (0.001 + 0.000 secs).
+
+[INBOX]
+[INBOX.Drafts]
+[INBOX.Envoy&AOk-] = [INBOX.Envoyé]
+[INBOX.Sent]
+[INBOX.Spam]
+[INBOX.Trash]
+
+Host2: folders list (first the raw imap format then the [X] = [Y]):
+* LIST (\HasChildren) "." INBOX
+* LIST (\HasNoChildren \UnMarked) "." INBOX.Envoy&AOk-
+* LIST (\HasNoChildren \UnMarked \Sent) "." INBOX.Sent
+* LIST (\HasNoChildren \UnMarked \Drafts) "." INBOX.Drafts
+* LIST (\HasNoChildren \UnMarked \Junk) "." INBOX.Spam
+* LIST (\HasNoChildren \UnMarked \Trash) "." INBOX.Trash
+10 OK List completed (0.001 + 0.000 secs).
+
+[INBOX]
+[INBOX.Drafts]
+[INBOX.Envoy&AOk-] = [INBOX.Envoyé]
+[INBOX.Sent]
+[INBOX.Spam]
+[INBOX.Trash]
+
+Checking SEARCH ALL works on both accounts. To avoid that check, use --nochecknoabletosearch
+Host1: checking if SEARCH ALL works on INBOX
+Host1: folder [INBOX] has 536 messages mentioned by SELECT
+Host1: folder [INBOX] has 536 messages found by SEARCH ALL
+Host1: folder [INBOX] has the same messages count (536) by SELECT and SEARCH ALL
+Host2: checking if SEARCH ALL works on INBOX
+Host2: folder [INBOX] has 536 messages mentioned by SELECT
+Host2: folder [INBOX] has 536 messages found by SEARCH ALL
+Host2: folder [INBOX] has the same messages count (536) by SELECT and SEARCH ALL
+Good! SEARCH ALL works on both accounts.
+++++ Looping on each one of 6 folders to sync
+Folder     1/6 [INBOX]                             -> [INBOX]                            
+Host1: folder [INBOX] has 536 messages in total (mentioned by SELECT)
+Host2: folder [INBOX] has 536 messages in total (mentioned by SELECT)
+Host2: folder [INBOX] permanentflags: 
+Host1: folder [INBOX] considering 536 messages
+Host2: folder [INBOX] considering 536 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/ziad@gema-group.com/mail2.gema-group.com/ziad@gema-group.com/INBOX/INBOX ( 112 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX] selected 536 messages, duplicates 0
+Host2: folder [INBOX] selected 536 messages, duplicates 0
+msg INBOX/107 skipped (3641 exceeds maxsize limit 0 bytes)
+msg INBOX/108 skipped (3652 exceeds maxsize limit 0 bytes)
+msg INBOX/109 skipped (3641 exceeds maxsize limit 0 bytes)
+msg INBOX/110 skipped (3656 exceeds maxsize limit 0 bytes)
+msg INBOX/111 skipped (3660 exceeds maxsize limit 0 bytes)
+msg INBOX/112 skipped (270586 exceeds maxsize limit 0 bytes)
+msg INBOX/113 skipped (266692 exceeds maxsize limit 0 bytes)
+msg INBOX/114 skipped (267139 exceeds maxsize limit 0 bytes)
+msg INBOX/115 skipped (266866 exceeds maxsize limit 0 bytes)
+msg INBOX/116 skipped (268663 exceeds maxsize limit 0 bytes)
+msg INBOX/117 skipped (5710 exceeds maxsize limit 0 bytes)
+msg INBOX/118 skipped (5710 exceeds maxsize limit 0 bytes)
+msg INBOX/119 skipped (5686 exceeds maxsize limit 0 bytes)
+msg INBOX/120 skipped (5676 exceeds maxsize limit 0 bytes)
+msg INBOX/121 skipped (5703 exceeds maxsize limit 0 bytes)
+msg INBOX/122 skipped (5680 exceeds maxsize limit 0 bytes)
+msg INBOX/123 skipped (5693 exceeds maxsize limit 0 bytes)
+msg INBOX/124 skipped (5662 exceeds maxsize limit 0 bytes)
+msg INBOX/125 skipped (5658 exceeds maxsize limit 0 bytes)
+msg INBOX/126 skipped (5682 exceeds maxsize limit 0 bytes)
+msg INBOX/127 skipped (9052 exceeds maxsize limit 0 bytes)
+msg INBOX/128 skipped (9064 exceeds maxsize limit 0 bytes)
+msg INBOX/129 skipped (9033 exceeds maxsize limit 0 bytes)
+msg INBOX/130 skipped (9038 exceeds maxsize limit 0 bytes)
+msg INBOX/131 skipped (9057 exceeds maxsize limit 0 bytes)
+msg INBOX/132 skipped (7992 exceeds maxsize limit 0 bytes)
+msg INBOX/133 skipped (8047 exceeds maxsize limit 0 bytes)
+msg INBOX/134 skipped (8051 exceeds maxsize limit 0 bytes)
+msg INBOX/135 skipped (8064 exceeds maxsize limit 0 bytes)
+msg INBOX/136 skipped (8012 exceeds maxsize limit 0 bytes)
+msg INBOX/137 skipped (8038 exceeds maxsize limit 0 bytes)
+msg INBOX/138 skipped (7989 exceeds maxsize limit 0 bytes)
+msg INBOX/139 skipped (8034 exceeds maxsize limit 0 bytes)
+msg INBOX/140 skipped (161429 exceeds maxsize limit 0 bytes)
+msg INBOX/141 skipped (36204 exceeds maxsize limit 0 bytes)
+msg INBOX/142 skipped (849812 exceeds maxsize limit 0 bytes)
+msg INBOX/143 skipped (7784 exceeds maxsize limit 0 bytes)
+msg INBOX/144 skipped (7828 exceeds maxsize limit 0 bytes)
+msg INBOX/145 skipped (7804 exceeds maxsize limit 0 bytes)
+msg INBOX/146 skipped (7820 exceeds maxsize limit 0 bytes)
+msg INBOX/147 skipped (7798 exceeds maxsize limit 0 bytes)
+msg INBOX/148 skipped (7220 exceeds maxsize limit 0 bytes)
+msg INBOX/149 skipped (129049 exceeds maxsize limit 0 bytes)
+msg INBOX/150 skipped (12311 exceeds maxsize limit 0 bytes)
+msg INBOX/151 skipped (12611 exceeds maxsize limit 0 bytes)
+msg INBOX/152 skipped (9353 exceeds maxsize limit 0 bytes)
+msg INBOX/153 skipped (12643 exceeds maxsize limit 0 bytes)
+msg INBOX/154 skipped (12644 exceeds maxsize limit 0 bytes)
+msg INBOX/155 skipped (361482 exceeds maxsize limit 0 bytes)
+msg INBOX/156 skipped (1798 exceeds maxsize limit 0 bytes)
+msg INBOX/157 skipped (258580 exceeds maxsize limit 0 bytes)
+msg INBOX/158 skipped (2745 exceeds maxsize limit 0 bytes)
+msg INBOX/159 skipped (2745 exceeds maxsize limit 0 bytes)
+msg INBOX/160 skipped (2757 exceeds maxsize limit 0 bytes)
+msg INBOX/161 skipped (2745 exceeds maxsize limit 0 bytes)
+msg INBOX/162 skipped (14485 exceeds maxsize limit 0 bytes)
+msg INBOX/163 skipped (14479 exceeds maxsize limit 0 bytes)
+msg INBOX/164 skipped (14599 exceeds maxsize limit 0 bytes)
+msg INBOX/165 skipped (14494 exceeds maxsize limit 0 bytes)
+msg INBOX/166 skipped (1865 exceeds maxsize limit 0 bytes)
+msg INBOX/167 skipped (1866 exceeds maxsize limit 0 bytes)
+msg INBOX/168 skipped (1893 exceeds maxsize limit 0 bytes)
+msg INBOX/169 skipped (1843 exceeds maxsize limit 0 bytes)
+msg INBOX/170 skipped (1903 exceeds maxsize limit 0 bytes)
+msg INBOX/171 skipped (39831 exceeds maxsize limit 0 bytes)
+msg INBOX/172 skipped (18074 exceeds maxsize limit 0 bytes)
+msg INBOX/173 skipped (2693 exceeds maxsize limit 0 bytes)
+msg INBOX/174 skipped (2689 exceeds maxsize limit 0 bytes)
+msg INBOX/175 skipped (2699 exceeds maxsize limit 0 bytes)
+msg INBOX/176 skipped (2697 exceeds maxsize limit 0 bytes)
+msg INBOX/177 skipped (2692 exceeds maxsize limit 0 bytes)
+msg INBOX/178 skipped (12368 exceeds maxsize limit 0 bytes)
+msg INBOX/179 skipped (6654 exceeds maxsize limit 0 bytes)
+msg INBOX/180 skipped (7146 exceeds maxsize limit 0 bytes)
+msg INBOX/181 skipped (14790 exceeds maxsize limit 0 bytes)
+msg INBOX/182 skipped (14816 exceeds maxsize limit 0 bytes)
+msg INBOX/183 skipped (14781 exceeds maxsize limit 0 bytes)
+msg INBOX/184 skipped (14767 exceeds maxsize limit 0 bytes)
+msg INBOX/185 skipped (14796 exceeds maxsize limit 0 bytes)
+msg INBOX/186 skipped (231893 exceeds maxsize limit 0 bytes)
+msg INBOX/187 skipped (525257 exceeds maxsize limit 0 bytes)
+msg INBOX/188 skipped (386835 exceeds maxsize limit 0 bytes)
+msg INBOX/189 skipped (631316 exceeds maxsize limit 0 bytes)
+msg INBOX/190 skipped (14936 exceeds maxsize limit 0 bytes)
+msg INBOX/191 skipped (14771 exceeds maxsize limit 0 bytes)
+msg INBOX/192 skipped (14912 exceeds maxsize limit 0 bytes)
+msg INBOX/193 skipped (14747 exceeds maxsize limit 0 bytes)
+msg INBOX/194 skipped (8445 exceeds maxsize limit 0 bytes)
+msg INBOX/195 skipped (8464 exceeds maxsize limit 0 bytes)
+msg INBOX/196 skipped (8461 exceeds maxsize limit 0 bytes)
+msg INBOX/197 skipped (131018 exceeds maxsize limit 0 bytes)
+msg INBOX/198 skipped (7015 exceeds maxsize limit 0 bytes)
+msg INBOX/199 skipped (5045 exceeds maxsize limit 0 bytes)
+msg INBOX/200 skipped (43194 exceeds maxsize limit 0 bytes)
+msg INBOX/201 skipped (12781 exceeds maxsize limit 0 bytes)
+msg INBOX/202 skipped (7914 exceeds maxsize limit 0 bytes)
+msg INBOX/203 skipped (1719 exceeds maxsize limit 0 bytes)
+msg INBOX/204 skipped (110620 exceeds maxsize limit 0 bytes)
+msg INBOX/205 skipped (2613 exceeds maxsize limit 0 bytes)
+msg INBOX/206 skipped (2747 exceeds maxsize limit 0 bytes)
+msg INBOX/207 skipped (20241 exceeds maxsize limit 0 bytes)
+msg INBOX/208 skipped (20310 exceeds maxsize limit 0 bytes)
+msg INBOX/209 skipped (20304 exceeds maxsize limit 0 bytes)
+msg INBOX/210 skipped (20284 exceeds maxsize limit 0 bytes)
+msg INBOX/211 skipped (20294 exceeds maxsize limit 0 bytes)
+msg INBOX/212 skipped (20296 exceeds maxsize limit 0 bytes)
+msg INBOX/213 skipped (20765 exceeds maxsize limit 0 bytes)
+msg INBOX/214 skipped (12413 exceeds maxsize limit 0 bytes)
+msg INBOX/215 skipped (7475 exceeds maxsize limit 0 bytes)
+msg INBOX/216 skipped (39106 exceeds maxsize limit 0 bytes)
+msg INBOX/217 skipped (11710 exceeds maxsize limit 0 bytes)
+msg INBOX/218 skipped (39086 exceeds maxsize limit 0 bytes)
+msg INBOX/219 skipped (2452 exceeds maxsize limit 0 bytes)
+msg INBOX/220 skipped (8680 exceeds maxsize limit 0 bytes)
+msg INBOX/221 skipped (78735 exceeds maxsize limit 0 bytes)
+msg INBOX/222 skipped (8344 exceeds maxsize limit 0 bytes)
+msg INBOX/223 skipped (97541 exceeds maxsize limit 0 bytes)
+msg INBOX/224 skipped (5863 exceeds maxsize limit 0 bytes)
+msg INBOX/225 skipped (24303 exceeds maxsize limit 0 bytes)
+msg INBOX/226 skipped (24287 exceeds maxsize limit 0 bytes)
+msg INBOX/227 skipped (24265 exceeds maxsize limit 0 bytes)
+msg INBOX/228 skipped (24277 exceeds maxsize limit 0 bytes)
+msg INBOX/229 skipped (24265 exceeds maxsize limit 0 bytes)
+msg INBOX/230 skipped (24265 exceeds maxsize limit 0 bytes)
+msg INBOX/231 skipped (24265 exceeds maxsize limit 0 bytes)
+msg INBOX/232 skipped (11649 exceeds maxsize limit 0 bytes)
+msg INBOX/233 skipped (10684 exceeds maxsize limit 0 bytes)
+msg INBOX/234 skipped (11050 exceeds maxsize limit 0 bytes)
+msg INBOX/235 skipped (11027 exceeds maxsize limit 0 bytes)
+msg INBOX/236 skipped (11027 exceeds maxsize limit 0 bytes)
+msg INBOX/237 skipped (11079 exceeds maxsize limit 0 bytes)
+msg INBOX/238 skipped (11025 exceeds maxsize limit 0 bytes)
+msg INBOX/239 skipped (11026 exceeds maxsize limit 0 bytes)
+msg INBOX/240 skipped (11027 exceeds maxsize limit 0 bytes)
+msg INBOX/241 skipped (11054 exceeds maxsize limit 0 bytes)
+msg INBOX/242 skipped (20003 exceeds maxsize limit 0 bytes)
+msg INBOX/243 skipped (2231090 exceeds maxsize limit 0 bytes)
+msg INBOX/244 skipped (6527 exceeds maxsize limit 0 bytes)
+msg INBOX/245 skipped (11119 exceeds maxsize limit 0 bytes)
+msg INBOX/246 skipped (95731 exceeds maxsize limit 0 bytes)
+msg INBOX/247 skipped (162211 exceeds maxsize limit 0 bytes)
+msg INBOX/248 skipped (1021718 exceeds maxsize limit 0 bytes)
+msg INBOX/249 skipped (177785 exceeds maxsize limit 0 bytes)
+msg INBOX/250 skipped (177813 exceeds maxsize limit 0 bytes)
+msg INBOX/251 skipped (9187 exceeds maxsize limit 0 bytes)
+msg INBOX/252 skipped (12045 exceeds maxsize limit 0 bytes)
+msg INBOX/253 skipped (9884 exceeds maxsize limit 0 bytes)
+msg INBOX/254 skipped (11700 exceeds maxsize limit 0 bytes)
+msg INBOX/255 skipped (6213 exceeds maxsize limit 0 bytes)
+msg INBOX/256 skipped (555814 exceeds maxsize limit 0 bytes)
+msg INBOX/257 skipped (19546 exceeds maxsize limit 0 bytes)
+msg INBOX/258 skipped (4328 exceeds maxsize limit 0 bytes)
+msg INBOX/259 skipped (4420 exceeds maxsize limit 0 bytes)
+msg INBOX/260 skipped (7441 exceeds maxsize limit 0 bytes)
+msg INBOX/261 skipped (2852 exceeds maxsize limit 0 bytes)
+msg INBOX/262 skipped (3553 exceeds maxsize limit 0 bytes)
+msg INBOX/263 skipped (3901 exceeds maxsize limit 0 bytes)
+msg INBOX/264 skipped (2212101 exceeds maxsize limit 0 bytes)
+msg INBOX/265 skipped (97242 exceeds maxsize limit 0 bytes)
+msg INBOX/266 skipped (8121 exceeds maxsize limit 0 bytes)
+msg INBOX/267 skipped (3522 exceeds maxsize limit 0 bytes)
+msg INBOX/268 skipped (3552 exceeds maxsize limit 0 bytes)
+msg INBOX/269 skipped (3540 exceeds maxsize limit 0 bytes)
+msg INBOX/270 skipped (3530 exceeds maxsize limit 0 bytes)
+msg INBOX/271 skipped (3531 exceeds maxsize limit 0 bytes)
+msg INBOX/272 skipped (3593 exceeds maxsize limit 0 bytes)
+msg INBOX/273 skipped (3528 exceeds maxsize limit 0 bytes)
+msg INBOX/274 skipped (3823 exceeds maxsize limit 0 bytes)
+msg INBOX/275 skipped (51023 exceeds maxsize limit 0 bytes)
+msg INBOX/276 skipped (9156 exceeds maxsize limit 0 bytes)
+msg INBOX/277 skipped (7988 exceeds maxsize limit 0 bytes)
+msg INBOX/278 skipped (8069 exceeds maxsize limit 0 bytes)
+msg INBOX/279 skipped (7840 exceeds maxsize limit 0 bytes)
+msg INBOX/280 skipped (7635 exceeds maxsize limit 0 bytes)
+msg INBOX/281 skipped (7778 exceeds maxsize limit 0 bytes)
+msg INBOX/282 skipped (7635 exceeds maxsize limit 0 bytes)
+msg INBOX/283 skipped (7627 exceeds maxsize limit 0 bytes)
+msg INBOX/284 skipped (7804 exceeds maxsize limit 0 bytes)
+msg INBOX/285 skipped (2757 exceeds maxsize limit 0 bytes)
+msg INBOX/286 skipped (2745 exceeds maxsize limit 0 bytes)
+msg INBOX/287 skipped (2741 exceeds maxsize limit 0 bytes)
+msg INBOX/288 skipped (2741 exceeds maxsize limit 0 bytes)
+msg INBOX/289 skipped (14491 exceeds maxsize limit 0 bytes)
+msg INBOX/290 skipped (14591 exceeds maxsize limit 0 bytes)
+msg INBOX/291 skipped (2683 exceeds maxsize limit 0 bytes)
+msg INBOX/292 skipped (2701 exceeds maxsize limit 0 bytes)
+msg INBOX/293 skipped (2688 exceeds maxsize limit 0 bytes)
+msg INBOX/294 skipped (14752 exceeds maxsize limit 0 bytes)
+msg INBOX/295 skipped (14790 exceeds maxsize limit 0 bytes)
+msg INBOX/296 skipped (14790 exceeds maxsize limit 0 bytes)
+msg INBOX/297 skipped (8464 exceeds maxsize limit 0 bytes)
+msg INBOX/298 skipped (8480 exceeds maxsize limit 0 bytes)
+msg INBOX/299 skipped (24279 exceeds maxsize limit 0 bytes)
+msg INBOX/300 skipped (5780 exceeds maxsize limit 0 bytes)
+msg INBOX/301 skipped (5957 exceeds maxsize limit 0 bytes)
+msg INBOX/302 skipped (6143 exceeds maxsize limit 0 bytes)
+msg INBOX/303 skipped (5681 exceeds maxsize limit 0 bytes)
+msg INBOX/304 skipped (5351 exceeds maxsize limit 0 bytes)
+msg INBOX/305 skipped (5770 exceeds maxsize limit 0 bytes)
+msg INBOX/306 skipped (5262 exceeds maxsize limit 0 bytes)
+msg INBOX/307 skipped (7750 exceeds maxsize limit 0 bytes)
+msg INBOX/308 skipped (17356 exceeds maxsize limit 0 bytes)
+msg INBOX/309 skipped (23293 exceeds maxsize limit 0 bytes)
+msg INBOX/310 skipped (10978 exceeds maxsize limit 0 bytes)
+msg INBOX/311 skipped (10931 exceeds maxsize limit 0 bytes)
+msg INBOX/312 skipped (4554 exceeds maxsize limit 0 bytes)
+msg INBOX/313 skipped (93811 exceeds maxsize limit 0 bytes)
+msg INBOX/314 skipped (13277 exceeds maxsize limit 0 bytes)
+msg INBOX/315 skipped (7999 exceeds maxsize limit 0 bytes)
+msg INBOX/316 skipped (12234 exceeds maxsize limit 0 bytes)
+msg INBOX/317 skipped (9696 exceeds maxsize limit 0 bytes)
+msg INBOX/318 skipped (20924 exceeds maxsize limit 0 bytes)
+msg INBOX/319 skipped (9695 exceeds maxsize limit 0 bytes)
+msg INBOX/320 skipped (9711 exceeds maxsize limit 0 bytes)
+msg INBOX/321 skipped (4838 exceeds maxsize limit 0 bytes)
+msg INBOX/322 skipped (681286 exceeds maxsize limit 0 bytes)
+msg INBOX/323 skipped (8504 exceeds maxsize limit 0 bytes)
+msg INBOX/324 skipped (415330 exceeds maxsize limit 0 bytes)
+msg INBOX/325 skipped (916544 exceeds maxsize limit 0 bytes)
+msg INBOX/326 skipped (637214 exceeds maxsize limit 0 bytes)
+msg INBOX/327 skipped (10181 exceeds maxsize limit 0 bytes)
+msg INBOX/328 skipped (8230 exceeds maxsize limit 0 bytes)
+msg INBOX/329 skipped (9493 exceeds maxsize limit 0 bytes)
+msg INBOX/330 skipped (8852 exceeds maxsize limit 0 bytes)
+msg INBOX/331 skipped (11090 exceeds maxsize limit 0 bytes)
+msg INBOX/332 skipped (15218 exceeds maxsize limit 0 bytes)
+msg INBOX/333 skipped (784538 exceeds maxsize limit 0 bytes)
+msg INBOX/334 skipped (9179 exceeds maxsize limit 0 bytes)
+msg INBOX/335 skipped (9210 exceeds maxsize limit 0 bytes)
+msg INBOX/336 skipped (1099614 exceeds maxsize limit 0 bytes)
+msg INBOX/337 skipped (14907 exceeds maxsize limit 0 bytes)
+msg INBOX/338 skipped (10191 exceeds maxsize limit 0 bytes)
+msg INBOX/339 skipped (7671 exceeds maxsize limit 0 bytes)
+msg INBOX/340 skipped (41831 exceeds maxsize limit 0 bytes)
+msg INBOX/341 skipped (964273 exceeds maxsize limit 0 bytes)
+msg INBOX/342 skipped (7706 exceeds maxsize limit 0 bytes)
+msg INBOX/343 skipped (9261 exceeds maxsize limit 0 bytes)
+msg INBOX/344 skipped (9258 exceeds maxsize limit 0 bytes)
+msg INBOX/345 skipped (956331 exceeds maxsize limit 0 bytes)
+msg INBOX/346 skipped (1000696 exceeds maxsize limit 0 bytes)
+msg INBOX/347 skipped (1000700 exceeds maxsize limit 0 bytes)
+msg INBOX/348 skipped (9366 exceeds maxsize limit 0 bytes)
+msg INBOX/349 skipped (9529 exceeds maxsize limit 0 bytes)
+msg INBOX/350 skipped (65817 exceeds maxsize limit 0 bytes)
+msg INBOX/351 skipped (27422 exceeds maxsize limit 0 bytes)
+msg INBOX/352 skipped (27451 exceeds maxsize limit 0 bytes)
+msg INBOX/353 skipped (25325 exceeds maxsize limit 0 bytes)
+msg INBOX/354 skipped (25346 exceeds maxsize limit 0 bytes)
+msg INBOX/355 skipped (20106 exceeds maxsize limit 0 bytes)
+msg INBOX/356 skipped (22977 exceeds maxsize limit 0 bytes)
+msg INBOX/357 skipped (20191 exceeds maxsize limit 0 bytes)
+msg INBOX/358 skipped (22818 exceeds maxsize limit 0 bytes)
+msg INBOX/359 skipped (22835 exceeds maxsize limit 0 bytes)
+msg INBOX/360 skipped (22711 exceeds maxsize limit 0 bytes)
+msg INBOX/361 skipped (20962 exceeds maxsize limit 0 bytes)
+msg INBOX/362 skipped (21161 exceeds maxsize limit 0 bytes)
+msg INBOX/363 skipped (21225 exceeds maxsize limit 0 bytes)
+msg INBOX/364 skipped (21215 exceeds maxsize limit 0 bytes)
+msg INBOX/365 skipped (44691 exceeds maxsize limit 0 bytes)
+msg INBOX/366 skipped (18333 exceeds maxsize limit 0 bytes)
+msg INBOX/367 skipped (18233 exceeds maxsize limit 0 bytes)
+msg INBOX/368 skipped (21099 exceeds maxsize limit 0 bytes)
+msg INBOX/369 skipped (17778 exceeds maxsize limit 0 bytes)
+msg INBOX/370 skipped (7030 exceeds maxsize limit 0 bytes)
+msg INBOX/371 skipped (17606 exceeds maxsize limit 0 bytes)
+msg INBOX/372 skipped (20518 exceeds maxsize limit 0 bytes)
+msg INBOX/373 skipped (20596 exceeds maxsize limit 0 bytes)
+msg INBOX/374 skipped (210235 exceeds maxsize limit 0 bytes)
+msg INBOX/375 skipped (3783 exceeds maxsize limit 0 bytes)
+msg INBOX/376 skipped (314658 exceeds maxsize limit 0 bytes)
+msg INBOX/377 skipped (20681 exceeds maxsize limit 0 bytes)
+msg INBOX/378 skipped (9733 exceeds maxsize limit 0 bytes)
+msg INBOX/379 skipped (9359 exceeds maxsize limit 0 bytes)
+msg INBOX/380 skipped (9161 exceeds maxsize limit 0 bytes)
+msg INBOX/381 skipped (20535 exceeds maxsize limit 0 bytes)
+msg INBOX/382 skipped (20401 exceeds maxsize limit 0 bytes)
+msg INBOX/383 skipped (121365 exceeds maxsize limit 0 bytes)
+msg INBOX/384 skipped (20543 exceeds maxsize limit 0 bytes)
+msg INBOX/385 skipped (17561 exceeds maxsize limit 0 bytes)
+msg INBOX/386 skipped (17575 exceeds maxsize limit 0 bytes)
+msg INBOX/387 skipped (17575 exceeds maxsize limit 0 bytes)
+msg INBOX/388 skipped (17583 exceeds maxsize limit 0 bytes)
+msg INBOX/389 skipped (11148 exceeds maxsize limit 0 bytes)
+msg INBOX/390 skipped (18281 exceeds maxsize limit 0 bytes)
+msg INBOX/391 skipped (16546 exceeds maxsize limit 0 bytes)
+msg INBOX/392 skipped (16562 exceeds maxsize limit 0 bytes)
+msg INBOX/393 skipped (14998 exceeds maxsize limit 0 bytes)
+msg INBOX/394 skipped (4501 exceeds maxsize limit 0 bytes)
+msg INBOX/395 skipped (6019 exceeds maxsize limit 0 bytes)
+msg INBOX/396 skipped (7301 exceeds maxsize limit 0 bytes)
+msg INBOX/397 skipped (50589 exceeds maxsize limit 0 bytes)
+msg INBOX/398 skipped (16406 exceeds maxsize limit 0 bytes)
+msg INBOX/399 skipped (7629 exceeds maxsize limit 0 bytes)
+msg INBOX/400 skipped (135939 exceeds maxsize limit 0 bytes)
+msg INBOX/401 skipped (280371 exceeds maxsize limit 0 bytes)
+msg INBOX/402 skipped (12429 exceeds maxsize limit 0 bytes)
+msg INBOX/403 skipped (2210495 exceeds maxsize limit 0 bytes)
+msg INBOX/404 skipped (230397 exceeds maxsize limit 0 bytes)
+msg INBOX/405 skipped (30800 exceeds maxsize limit 0 bytes)
+msg INBOX/406 skipped (4368 exceeds maxsize limit 0 bytes)
+msg INBOX/407 skipped (4374 exceeds maxsize limit 0 bytes)
+msg INBOX/408 skipped (4362 exceeds maxsize limit 0 bytes)
+msg INBOX/409 skipped (4362 exceeds maxsize limit 0 bytes)
+msg INBOX/410 skipped (4359 exceeds maxsize limit 0 bytes)
+msg INBOX/411 skipped (65729 exceeds maxsize limit 0 bytes)
+msg INBOX/412 skipped (65736 exceeds maxsize limit 0 bytes)
+msg INBOX/413 skipped (7623 exceeds maxsize limit 0 bytes)
+msg INBOX/414 skipped (4363 exceeds maxsize limit 0 bytes)
+msg INBOX/415 skipped (4288 exceeds maxsize limit 0 bytes)
+msg INBOX/416 skipped (4299 exceeds maxsize limit 0 bytes)
+msg INBOX/417 skipped (4282 exceeds maxsize limit 0 bytes)
+msg INBOX/418 skipped (4285 exceeds maxsize limit 0 bytes)
+msg INBOX/419 skipped (4273 exceeds maxsize limit 0 bytes)
+msg INBOX/420 skipped (4270 exceeds maxsize limit 0 bytes)
+msg INBOX/421 skipped (4273 exceeds maxsize limit 0 bytes)
+msg INBOX/422 skipped (4412 exceeds maxsize limit 0 bytes)
+msg INBOX/423 skipped (4423 exceeds maxsize limit 0 bytes)
+msg INBOX/424 skipped (4406 exceeds maxsize limit 0 bytes)
+msg INBOX/425 skipped (65390 exceeds maxsize limit 0 bytes)
+msg INBOX/426 skipped (65399 exceeds maxsize limit 0 bytes)
+msg INBOX/427 skipped (37169 exceeds maxsize limit 0 bytes)
+msg INBOX/428 skipped (5424 exceeds maxsize limit 0 bytes)
+msg INBOX/429 skipped (5426 exceeds maxsize limit 0 bytes)
+msg INBOX/430 skipped (9199 exceeds maxsize limit 0 bytes)
+msg INBOX/431 skipped (13234 exceeds maxsize limit 0 bytes)
+msg INBOX/432 skipped (13253 exceeds maxsize limit 0 bytes)
+msg INBOX/433 skipped (6836 exceeds maxsize limit 0 bytes)
+msg INBOX/434 skipped (6851 exceeds maxsize limit 0 bytes)
+msg INBOX/435 skipped (8815 exceeds maxsize limit 0 bytes)
+msg INBOX/436 skipped (8812 exceeds maxsize limit 0 bytes)
+msg INBOX/437 skipped (9833 exceeds maxsize limit 0 bytes)
+msg INBOX/438 skipped (13996 exceeds maxsize limit 0 bytes)
+msg INBOX/439 skipped (2989 exceeds maxsize limit 0 bytes)
+msg INBOX/440 skipped (3799 exceeds maxsize limit 0 bytes)
+msg INBOX/441 skipped (3784 exceeds maxsize limit 0 bytes)
+msg INBOX/442 skipped (3768 exceeds maxsize limit 0 bytes)
+msg INBOX/443 skipped (3768 exceeds maxsize limit 0 bytes)
+msg INBOX/444 skipped (3802 exceeds maxsize limit 0 bytes)
+msg INBOX/445 skipped (3796 exceeds maxsize limit 0 bytes)
+msg INBOX/446 skipped (3811 exceeds maxsize limit 0 bytes)
+msg INBOX/447 skipped (51409 exceeds maxsize limit 0 bytes)
+msg INBOX/448 skipped (8745 exceeds maxsize limit 0 bytes)
+msg INBOX/449 skipped (5170 exceeds maxsize limit 0 bytes)
+msg INBOX/450 skipped (7307 exceeds maxsize limit 0 bytes)
+msg INBOX/451 skipped (6083 exceeds maxsize limit 0 bytes)
+msg INBOX/452 skipped (3811 exceeds maxsize limit 0 bytes)
+msg INBOX/453 skipped (3799 exceeds maxsize limit 0 bytes)
+msg INBOX/454 skipped (3784 exceeds maxsize limit 0 bytes)
+msg INBOX/455 skipped (3787 exceeds maxsize limit 0 bytes)
+msg INBOX/456 skipped (3787 exceeds maxsize limit 0 bytes)
+msg INBOX/457 skipped (3793 exceeds maxsize limit 0 bytes)
+msg INBOX/458 skipped (3802 exceeds maxsize limit 0 bytes)
+msg INBOX/459 skipped (3796 exceeds maxsize limit 0 bytes)
+msg INBOX/460 skipped (6644 exceeds maxsize limit 0 bytes)
+msg INBOX/461 skipped (5607 exceeds maxsize limit 0 bytes)
+msg INBOX/462 skipped (3858 exceeds maxsize limit 0 bytes)
+msg INBOX/463 skipped (19372 exceeds maxsize limit 0 bytes)
+msg INBOX/464 skipped (19350 exceeds maxsize limit 0 bytes)
+msg INBOX/465 skipped (19370 exceeds maxsize limit 0 bytes)
+msg INBOX/466 skipped (19337 exceeds maxsize limit 0 bytes)
+msg INBOX/467 skipped (19390 exceeds maxsize limit 0 bytes)
+msg INBOX/468 skipped (19355 exceeds maxsize limit 0 bytes)
+msg INBOX/469 skipped (19370 exceeds maxsize limit 0 bytes)
+msg INBOX/470 skipped (5579 exceeds maxsize limit 0 bytes)
+msg INBOX/471 skipped (5476 exceeds maxsize limit 0 bytes)
+msg INBOX/472 skipped (381378 exceeds maxsize limit 0 bytes)
+msg INBOX/473 skipped (178370 exceeds maxsize limit 0 bytes)
+msg INBOX/474 skipped (9813 exceeds maxsize limit 0 bytes)
+msg INBOX/475 skipped (9908 exceeds maxsize limit 0 bytes)
+msg INBOX/476 skipped (9928 exceeds maxsize limit 0 bytes)
+msg INBOX/477 skipped (4497 exceeds maxsize limit 0 bytes)
+msg INBOX/478 skipped (4485 exceeds maxsize limit 0 bytes)
+msg INBOX/479 skipped (4485 exceeds maxsize limit 0 bytes)
+msg INBOX/480 skipped (4482 exceeds maxsize limit 0 bytes)
+msg INBOX/481 skipped (4497 exceeds maxsize limit 0 bytes)
+msg INBOX/482 skipped (4485 exceeds maxsize limit 0 bytes)
+msg INBOX/483 skipped (4485 exceeds maxsize limit 0 bytes)
+msg INBOX/484 skipped (4482 exceeds maxsize limit 0 bytes)
+msg INBOX/485 skipped (3706 exceeds maxsize limit 0 bytes)
+msg INBOX/486 skipped (3703 exceeds maxsize limit 0 bytes)
+msg INBOX/487 skipped (3716 exceeds maxsize limit 0 bytes)
+msg INBOX/488 skipped (4500 exceeds maxsize limit 0 bytes)
+msg INBOX/489 skipped (4511 exceeds maxsize limit 0 bytes)
+msg INBOX/490 skipped (4494 exceeds maxsize limit 0 bytes)
+msg INBOX/491 skipped (20006 exceeds maxsize limit 0 bytes)
+msg INBOX/492 skipped (19960 exceeds maxsize limit 0 bytes)
+msg INBOX/493 skipped (19938 exceeds maxsize limit 0 bytes)
+msg INBOX/494 skipped (19953 exceeds maxsize limit 0 bytes)
+msg INBOX/495 skipped (11937 exceeds maxsize limit 0 bytes)
+msg INBOX/496 skipped (11886 exceeds maxsize limit 0 bytes)
+msg INBOX/497 skipped (4400 exceeds maxsize limit 0 bytes)
+msg INBOX/498 skipped (17472 exceeds maxsize limit 0 bytes)
+msg INBOX/499 skipped (16974 exceeds maxsize limit 0 bytes)
+msg INBOX/500 skipped (37523 exceeds maxsize limit 0 bytes)
+msg INBOX/501 skipped (8363 exceeds maxsize limit 0 bytes)
+msg INBOX/502 skipped (8367 exceeds maxsize limit 0 bytes)
+msg INBOX/503 skipped (8391 exceeds maxsize limit 0 bytes)
+msg INBOX/504 skipped (8391 exceeds maxsize limit 0 bytes)
+msg INBOX/505 skipped (8363 exceeds maxsize limit 0 bytes)
+msg INBOX/506 skipped (8392 exceeds maxsize limit 0 bytes)
+msg INBOX/507 skipped (8340 exceeds maxsize limit 0 bytes)
+msg INBOX/508 skipped (8436 exceeds maxsize limit 0 bytes)
+msg INBOX/509 skipped (5265 exceeds maxsize limit 0 bytes)
+msg INBOX/510 skipped (3716 exceeds maxsize limit 0 bytes)
+msg INBOX/511 skipped (30600 exceeds maxsize limit 0 bytes)
+msg INBOX/512 skipped (30603 exceeds maxsize limit 0 bytes)
+msg INBOX/513 skipped (381467 exceeds maxsize limit 0 bytes)
+msg INBOX/514 skipped (7472 exceeds maxsize limit 0 bytes)
+msg INBOX/515 skipped (83680 exceeds maxsize limit 0 bytes)
+msg INBOX/516 skipped (19728 exceeds maxsize limit 0 bytes)
+msg INBOX/517 skipped (19731 exceeds maxsize limit 0 bytes)
+msg INBOX/518 skipped (13077 exceeds maxsize limit 0 bytes)
+msg INBOX/519 skipped (3518 exceeds maxsize limit 0 bytes)
+msg INBOX/520 skipped (10924 exceeds maxsize limit 0 bytes)
+msg INBOX/521 skipped (9696 exceeds maxsize limit 0 bytes)
+msg INBOX/522 skipped (9686 exceeds maxsize limit 0 bytes)
+msg INBOX/523 skipped (9701 exceeds maxsize limit 0 bytes)
+msg INBOX/524 skipped (9475 exceeds maxsize limit 0 bytes)
+msg INBOX/525 skipped (9466 exceeds maxsize limit 0 bytes)
+msg INBOX/526 skipped (9448 exceeds maxsize limit 0 bytes)
+msg INBOX/527 skipped (964270 exceeds maxsize limit 0 bytes)
+msg INBOX/528 skipped (956334 exceeds maxsize limit 0 bytes)
+msg INBOX/529 skipped (18284 exceeds maxsize limit 0 bytes)
+msg INBOX/530 skipped (15308 exceeds maxsize limit 0 bytes)
+msg INBOX/531 skipped (7002 exceeds maxsize limit 0 bytes)
+msg INBOX/532 skipped (7193 exceeds maxsize limit 0 bytes)
+msg INBOX/533 skipped (20752 exceeds maxsize limit 0 bytes)
+msg INBOX/534 skipped (22339 exceeds maxsize limit 0 bytes)
+msg INBOX/535 skipped (157868 exceeds maxsize limit 0 bytes)
+msg INBOX/536 skipped (11180 exceeds maxsize limit 0 bytes)
+msg INBOX/537 skipped (10999 exceeds maxsize limit 0 bytes)
+msg INBOX/538 skipped (6731 exceeds maxsize limit 0 bytes)
+msg INBOX/539 skipped (7444 exceeds maxsize limit 0 bytes)
+msg INBOX/540 skipped (1692671 exceeds maxsize limit 0 bytes)
+msg INBOX/541 skipped (1715801 exceeds maxsize limit 0 bytes)
+msg INBOX/542 skipped (123197 exceeds maxsize limit 0 bytes)
+msg INBOX/543 skipped (108668 exceeds maxsize limit 0 bytes)
+msg INBOX/544 skipped (3498922 exceeds maxsize limit 0 bytes)
+msg INBOX/545 skipped (16781 exceeds maxsize limit 0 bytes)
+msg INBOX/546 skipped (1573 exceeds maxsize limit 0 bytes)
+msg INBOX/547 skipped (1366 exceeds maxsize limit 0 bytes)
+msg INBOX/548 skipped (1362 exceeds maxsize limit 0 bytes)
+msg INBOX/549 skipped (1409 exceeds maxsize limit 0 bytes)
+msg INBOX/550 skipped (1407 exceeds maxsize limit 0 bytes)
+msg INBOX/551 skipped (1410 exceeds maxsize limit 0 bytes)
+msg INBOX/552 skipped (1424 exceeds maxsize limit 0 bytes)
+msg INBOX/553 skipped (9086 exceeds maxsize limit 0 bytes)
+msg INBOX/554 skipped (8995 exceeds maxsize limit 0 bytes)
+msg INBOX/555 skipped (12286 exceeds maxsize limit 0 bytes)
+msg INBOX/556 skipped (12225 exceeds maxsize limit 0 bytes)
+msg INBOX/557 skipped (17544 exceeds maxsize limit 0 bytes)
+msg INBOX/558 skipped (18666 exceeds maxsize limit 0 bytes)
+msg INBOX/559 skipped (14578 exceeds maxsize limit 0 bytes)
+msg INBOX/560 skipped (14576 exceeds maxsize limit 0 bytes)
+msg INBOX/561 skipped (14570 exceeds maxsize limit 0 bytes)
+msg INBOX/562 skipped (14607 exceeds maxsize limit 0 bytes)
+msg INBOX/563 skipped (14605 exceeds maxsize limit 0 bytes)
+msg INBOX/564 skipped (14603 exceeds maxsize limit 0 bytes)
+msg INBOX/565 skipped (14604 exceeds maxsize limit 0 bytes)
+msg INBOX/566 skipped (14601 exceeds maxsize limit 0 bytes)
+msg INBOX/567 skipped (748174 exceeds maxsize limit 0 bytes)
+msg INBOX/568 skipped (748241 exceeds maxsize limit 0 bytes)
+msg INBOX/569 skipped (748240 exceeds maxsize limit 0 bytes)
+msg INBOX/570 skipped (748217 exceeds maxsize limit 0 bytes)
+msg INBOX/571 skipped (748180 exceeds maxsize limit 0 bytes)
+msg INBOX/572 skipped (748210 exceeds maxsize limit 0 bytes)
+msg INBOX/573 skipped (748172 exceeds maxsize limit 0 bytes)
+msg INBOX/574 skipped (748198 exceeds maxsize limit 0 bytes)
+msg INBOX/575 skipped (748175 exceeds maxsize limit 0 bytes)
+msg INBOX/576 skipped (130493 exceeds maxsize limit 0 bytes)
+msg INBOX/577 skipped (17703 exceeds maxsize limit 0 bytes)
+msg INBOX/578 skipped (9929 exceeds maxsize limit 0 bytes)
+msg INBOX/579 skipped (7325 exceeds maxsize limit 0 bytes)
+msg INBOX/580 skipped (757728 exceeds maxsize limit 0 bytes)
+msg INBOX/581 skipped (757730 exceeds maxsize limit 0 bytes)
+msg INBOX/582 skipped (931432 exceeds maxsize limit 0 bytes)
+msg INBOX/583 skipped (10723 exceeds maxsize limit 0 bytes)
+msg INBOX/584 skipped (8587 exceeds maxsize limit 0 bytes)
+msg INBOX/585 skipped (46131 exceeds maxsize limit 0 bytes)
+msg INBOX/586 skipped (139430 exceeds maxsize limit 0 bytes)
+msg INBOX/587 skipped (10921 exceeds maxsize limit 0 bytes)
+msg INBOX/588 skipped (16743 exceeds maxsize limit 0 bytes)
+msg INBOX/589 skipped (16848 exceeds maxsize limit 0 bytes)
+msg INBOX/590 skipped (16807 exceeds maxsize limit 0 bytes)
+msg INBOX/591 skipped (16733 exceeds maxsize limit 0 bytes)
+msg INBOX/592 skipped (16796 exceeds maxsize limit 0 bytes)
+msg INBOX/593 skipped (13256 exceeds maxsize limit 0 bytes)
+msg INBOX/594 skipped (7822 exceeds maxsize limit 0 bytes)
+msg INBOX/595 skipped (17867 exceeds maxsize limit 0 bytes)
+msg INBOX/596 skipped (17882 exceeds maxsize limit 0 bytes)
+msg INBOX/597 skipped (4339 exceeds maxsize limit 0 bytes)
+msg INBOX/598 skipped (7269 exceeds maxsize limit 0 bytes)
+msg INBOX/599 skipped (76312 exceeds maxsize limit 0 bytes)
+msg INBOX/600 skipped (29220 exceeds maxsize limit 0 bytes)
+msg INBOX/601 skipped (11586 exceeds maxsize limit 0 bytes)
+msg INBOX/602 skipped (11505 exceeds maxsize limit 0 bytes)
+msg INBOX/603 skipped (11493 exceeds maxsize limit 0 bytes)
+msg INBOX/604 skipped (50456 exceeds maxsize limit 0 bytes)
+msg INBOX/605 skipped (59851 exceeds maxsize limit 0 bytes)
+msg INBOX/606 skipped (1245299 exceeds maxsize limit 0 bytes)
+msg INBOX/607 skipped (8340 exceeds maxsize limit 0 bytes)
+msg INBOX/608 skipped (10613 exceeds maxsize limit 0 bytes)
+msg INBOX/609 skipped (55250 exceeds maxsize limit 0 bytes)
+msg INBOX/610 skipped (720659 exceeds maxsize limit 0 bytes)
+msg INBOX/611 skipped (890434 exceeds maxsize limit 0 bytes)
+msg INBOX/612 skipped (20441 exceeds maxsize limit 0 bytes)
+msg INBOX/613 skipped (10568 exceeds maxsize limit 0 bytes)
+msg INBOX/614 skipped (10528 exceeds maxsize limit 0 bytes)
+msg INBOX/615 skipped (122046 exceeds maxsize limit 0 bytes)
+msg INBOX/616 skipped (4856 exceeds maxsize limit 0 bytes)
+msg INBOX/617 skipped (6799 exceeds maxsize limit 0 bytes)
+msg INBOX/618 skipped (7028 exceeds maxsize limit 0 bytes)
+msg INBOX/619 skipped (6968 exceeds maxsize limit 0 bytes)
+msg INBOX/620 skipped (6883 exceeds maxsize limit 0 bytes)
+msg INBOX/621 skipped (7778 exceeds maxsize limit 0 bytes)
+msg INBOX/622 skipped (6737 exceeds maxsize limit 0 bytes)
+msg INBOX/623 skipped (7450 exceeds maxsize limit 0 bytes)
+msg INBOX/624 skipped (1355 exceeds maxsize limit 0 bytes)
+msg INBOX/625 skipped (1364 exceeds maxsize limit 0 bytes)
+msg INBOX/626 skipped (1366 exceeds maxsize limit 0 bytes)
+msg INBOX/627 skipped (1355 exceeds maxsize limit 0 bytes)
+msg INBOX/628 skipped (1358 exceeds maxsize limit 0 bytes)
+msg INBOX/629 skipped (1363 exceeds maxsize limit 0 bytes)
+msg INBOX/630 skipped (1368 exceeds maxsize limit 0 bytes)
+msg INBOX/631 skipped (1414 exceeds maxsize limit 0 bytes)
+msg INBOX/632 skipped (1419 exceeds maxsize limit 0 bytes)
+msg INBOX/633 skipped (1415 exceeds maxsize limit 0 bytes)
+msg INBOX/634 skipped (14582 exceeds maxsize limit 0 bytes)
+msg INBOX/635 skipped (14607 exceeds maxsize limit 0 bytes)
+msg INBOX/636 skipped (748246 exceeds maxsize limit 0 bytes)
+msg INBOX/637 skipped (931430 exceeds maxsize limit 0 bytes)
+msg INBOX/638 skipped (139432 exceeds maxsize limit 0 bytes)
+msg INBOX/639 skipped (16797 exceeds maxsize limit 0 bytes)
+msg INBOX/640 skipped (11544 exceeds maxsize limit 0 bytes)
+msg INBOX/641 skipped (55252 exceeds maxsize limit 0 bytes)
+msg INBOX/642 skipped (720657 exceeds maxsize limit 0 bytes)
+Folder     2/6 [INBOX.Drafts]                      -> [INBOX.Drafts]                     
+Host1: folder [INBOX.Drafts] has 1 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Drafts] has 1 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Drafts] permanentflags: 
+Host1: folder [INBOX.Drafts] considering 1 messages
+Host2: folder [INBOX.Drafts] considering 1 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/ziad@gema-group.com/mail2.gema-group.com/ziad@gema-group.com/INBOX/Drafts/INBOX/Drafts ( 126 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Drafts] selected 1 messages, duplicates 0
+Host2: folder [INBOX.Drafts] selected 1 messages, duplicates 0
+msg INBOX.Drafts/1 skipped (221 exceeds maxsize limit 0 bytes)
+Folder     3/6 [INBOX.Envoy&AOk-] = [INBOX.Envoyé] -> [INBOX.Envoy&AOk-] = [INBOX.Envoyé]
+Host1: folder [INBOX.Envoy&AOk-] has 2 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Envoy&AOk-] has 2 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Envoy&AOk-] permanentflags: 
+Host1: folder [INBOX.Envoy&AOk-] considering 2 messages
+Host2: folder [INBOX.Envoy&AOk-] considering 2 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/ziad@gema-group.com/mail2.gema-group.com/ziad@gema-group.com/INBOX/Envoy&AOk-/INBOX/Envoy&AOk- ( 134 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Envoy&AOk-] selected 2 messages, duplicates 0
+Host2: folder [INBOX.Envoy&AOk-] selected 2 messages, duplicates 0
+msg INBOX.Envoy&AOk-/1 skipped (490 exceeds maxsize limit 0 bytes)
+msg INBOX.Envoy&AOk-/2 skipped (508 exceeds maxsize limit 0 bytes)
+Folder     4/6 [INBOX.Sent]                        -> [INBOX.Sent]                       
+Host1: folder [INBOX.Sent] has 47 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Sent] has 47 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Sent] permanentflags: 
+Host1: folder [INBOX.Sent] considering 47 messages
+Host2: folder [INBOX.Sent] considering 47 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/ziad@gema-group.com/mail2.gema-group.com/ziad@gema-group.com/INBOX/Sent/INBOX/Sent ( 122 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Sent] selected 47 messages, duplicates 0
+Host2: folder [INBOX.Sent] selected 47 messages, duplicates 0
+msg INBOX.Sent/1 skipped (481 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/2 skipped (498 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/3 skipped (559 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/4 skipped (3760 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/5 skipped (469 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/6 skipped (699 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/7 skipped (805 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/8 skipped (590 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/9 skipped (393 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/10 skipped (393 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/11 skipped (377 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/12 skipped (397 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/13 skipped (393 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/14 skipped (448 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/15 skipped (458 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/16 skipped (693 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/17 skipped (412 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/18 skipped (480 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/19 skipped (408 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/20 skipped (419 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/21 skipped (890 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/22 skipped (443 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/23 skipped (453 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/24 skipped (423 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/25 skipped (423 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/26 skipped (451 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/27 skipped (453 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/28 skipped (423 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/29 skipped (427 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/30 skipped (427 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/31 skipped (423 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/32 skipped (377 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/33 skipped (373 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/34 skipped (394 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/35 skipped (337 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/36 skipped (555 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/37 skipped (1129 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/38 skipped (824 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/39 skipped (374 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/40 skipped (416 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/41 skipped (4643 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/42 skipped (386 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/43 skipped (1896 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/44 skipped (2402 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/45 skipped (661 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/46 skipped (635 exceeds maxsize limit 0 bytes)
+msg INBOX.Sent/47 skipped (636 exceeds maxsize limit 0 bytes)
+Folder     5/6 [INBOX.Spam]                        -> [INBOX.Spam]                       
+Host1: folder [INBOX.Spam] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Spam] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Spam] permanentflags: 
+Host1: folder [INBOX.Spam] considering 0 messages
+Host2: folder [INBOX.Spam] considering 0 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/ziad@gema-group.com/mail2.gema-group.com/ziad@gema-group.com/INBOX/Spam/INBOX/Spam ( 122 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Spam] selected 0 messages, duplicates 0
+Host2: folder [INBOX.Spam] selected 0 messages, duplicates 0
+Folder     6/6 [INBOX.Trash]                       -> [INBOX.Trash]                      
+Host1: folder [INBOX.Trash] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Trash] has 0 messages in total (mentioned by SELECT)
+Host2: folder [INBOX.Trash] permanentflags: 
+Host1: folder [INBOX.Trash] considering 0 messages
+Host2: folder [INBOX.Trash] considering 0 messages
+Local cache directory: /tmp/imapsync_cache/mail.gema-group.com/ziad@gema-group.com/mail2.gema-group.com/ziad@gema-group.com/INBOX/Trash/INBOX/Trash ( 124 characters long )
+CACHE h1 h2: 0 files
+Host1: folder [INBOX.Trash] selected 0 messages, duplicates 0
+Host2: folder [INBOX.Trash] selected 0 messages, duplicates 0
+++++ End looping on each folder
+++++ Statistics
+Transfer started on                     : Sunday 19 April 2026-04-19 08:41:30 +0000 UTC
+Transfer ended on                       : Sunday 19 April 2026-04-19 08:41:35 +0000 UTC
+Transfer time                           : 4.5 sec
+Folders synced                          : 6/6 synced
+Messages transferred                    : 0 
+Messages skipped                        : 586
+Messages found duplicate on host1       : 0
+Messages found duplicate on host2       : 0
+Messages found crossduplicate on host2  : 0
+Messages void (noheader) on host1       : 0  
+Messages void (noheader) on host2       : 0
+Messages found in host1 not in host2    : 0 messages
+Messages found in host2 not in host1    : 0 messages
+Messages deleted on host1               : 0
+Messages deleted on host2               : 0
+Total bytes transferred                 : 0 (0.000 KiB)
+Total bytes skipped                     : 54919080 (52.375 MiB)
+Message rate                            : 0.0 messages/s
+Average bandwidth rate                  : 0.0 KiB/s
+Reconnections to host1                  : 0
+Reconnections to host2                  : 0
+Memory consumption at the end           : 178.3 MiB (*time 0.2 MiB*h) (started with 161.7 MiB)
+Load end is                             : 0.26 0.27 0.31 2/654 on 8 cores
+CPU time and %cpu                       : 0.85 sec 19.0 %cpu 2.4 %allcpus
+Biggest message transferred             : 0 bytes (0.000 KiB)
+Memory/biggest message ratio            : NA
+The sync is strict, all 0 identified messages in host2 are on host1.
+Detected 0 errors
+Check if a new imapsync release is available by adding --releasecheck
+Homepage: https://imapsync.lamiral.info/
+Exiting with return value 0 (EX_OK: successful termination) 0/50 nb_errors/max_errors PID 518840
+Removing pidfile /tmp/imapsync.pid
+Log file is LOG_imapsync/2026_04_19_08_41_30_869_ziad@gema-group.com_ziad@gema-group.com.txt ( to change it, use --logfile filepath ; or use --nolog to turn off logging )

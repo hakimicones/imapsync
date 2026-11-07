@@ -1,0 +1,61 @@
+Here is imapsync 2.229 on host icones-soft.com, a linux system with 0.5/31.0 free GiB of RAM, 15.95% used by processes.
+with Perl 5.38.2 and Mail::IMAPClient 3.43
+Transfer started at Saturday 18 April 2026-04-18 18:20:26 +0000 UTC
+PID is 3632835 my PPID is 3270673
+Log file is LOG_imapsync/2026_04_18_18_20_26_033__.txt ( to change it, use --logfile path ; or use --nolog to turn off logging )
+Load is 0.28 0.22 0.23 2/598 on 8 cores
+Current directory is /opt/imapsync
+Real user id is root (uid 0)
+Effective user id is root (euid 0)
+$RCSfile: imapsync,v $ $Revision: 2.229 $ $Date: 2022/09/14 18:08:24 $ 
+Command line used, run by /usr/bin/perl:
+/usr/bin/imapsync --dry
+Temp directory is /tmp ( to change it use --tmpdir dirpath )
+kill -QUIT 3632835 # special behavior: call to sub catch_exit
+kill -TERM 3632835 # special behavior: call to sub catch_exit
+kill -INT 3632835 # special behavior: call to sub catch_reconnect
+kill -HUP 3632835 # special behavior: call to sub catch_print
+kill -USR1 3632835 # special behavior: call to sub toggle_sleep
+File /tmp/imapsync.pid does not exist
+PID file is /tmp/imapsync.pid ( to change it, use --pidfile filepath ; to avoid it use --pidfile "" )
+Writing my PID 3632835 in /tmp/imapsync.pid
+Writing also my logfile name in /tmp/imapsync.pid : LOG_imapsync/2026_04_18_18_20_26_033__.txt
+Modules version list ( use --no-modulesversion to turn off printing this Perl modules list ):
+Authen::NTLM         1.09
+CGI                  4.71
+Compress::Zlib       2.204
+Crypt::OpenSSL::RSA  0.33
+Data::Uniqid         0.12
+Digest::HMAC_MD5     1.04
+Digest::HMAC_SHA1    1.04
+Digest::MD5          2.58_01
+Encode               3.19
+Encode::IMAPUTF7     1.07
+File::Copy::Recursive 0.45
+File::Spec           3.88
+Getopt::Long         2.54
+HTML::Entities       3.81
+IO::Socket           1.52
+IO::Socket::INET     1.52
+IO::Socket::INET6    2.73
+IO::Socket::IP       0.4101
+IO::Socket::SSL      2.085
+IO::Tee              0.65
+JSON                 4.10
+JSON::WebToken       0.10
+LWP                  6.76
+MIME::Base64         3.16_01
+Mail::IMAPClient     3.43
+Net::Ping            2.76
+Net::SSLeay          1.94
+Term::ReadKey        2.38
+Test::MockObject     1.20200122
+Time::HiRes          1.9775
+URI::Escape          5.27
+Unicode::String      2.10
+
+Info: will resync flags for already transferred messages. Use --noresyncflags to not resync flags.
+Exiting after a justconnect on host(s):  
+Exiting with return value 0 (EX_OK: successful termination) 0/50 nb_errors/max_errors PID 3632835
+Removing pidfile /tmp/imapsync.pid
+Log file is LOG_imapsync/2026_04_18_18_20_26_033__.txt ( to change it, use --logfile filepath ; or use --nolog to turn off logging )
