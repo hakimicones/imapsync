@@ -1,5 +1,5 @@
 #!/bin/cat
-$Id: FAQ.Admin_Authentication.txt,v 1.13 2022/04/06 10:27:52 gilles Exp gilles $
+$Id: FAQ.Admin_Authentication.txt,v 1.14 2025/09/12 12:52:23 gilles Exp gilles $
 
 This documentation is also available online at
 https://imapsync.lamiral.info/FAQ.d/

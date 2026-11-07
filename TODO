@@ -1,5 +1,5 @@
 #!/bin/cat
-# $Id: TODO,v 1.269 2022/07/22 09:51:06 gilles Exp gilles $
+# $Id: TODO,v 1.286 2025/06/12 15:25:53 gilles Exp gilles $
 
 This documentation is also at http://imapsync.lamiral.info/#doc
 
@@ -8,6 +8,110 @@ TODO file for imapsync
 ----------------------
 
 https://imapsync.lamiral.info/TODO
+
+
+SUGGESTED 2025_02_21 by https://github.com/dsd0informtica
+https://github.com/imapsync/imapsync/issues/494
+Make --subfolder2 FOO --delete2folders trigger
+--delete2foldersonly m{FOO}
+if --delete2foldersonly not already set.
+
+SUGGESTED 2022_12_26 by Florent Heuze
+https://github.com/jeanGaston/ImapSync_Enhanced_logs 
+
+SUGGESTED 2025_01_28 by https://github.com/jotzet79
+https://github.com/imapsync/imapsync/issues/492
+With --gmail1, make --folderlast option be international,
+use the special names \All \Archive \Drafts \Flagged \Junk \Sent \Trash
+instead of the English ones.
+
+SUGGESTED 2024_02_16 by Gilles
+Bugfix. --folderrec in another namespace needs --nocheckfoldersexist or 
+something else. The ETA is not done while it should and the Folders sizes 
+part produces incorrect "does not exist", as they do exist.
+
+SUGGESTED 2023_11_14 by Genialsrl
+https://github.com/imapsync/imapsync/issues/424
+Identify messages having errors for flags resyncs "could not add flags" and 
+maybe append (if not already done).
+https://github.com/imapsync/imapsync/issues/494
+Make --subfolder2 FOO --delete2folders trigger
+
+How about the content, the beginning at least?
+
+
+SUGGESTED 2023_10_14 by debilin
+https://github.com/imapsync/imapsync/issues/416
+Add PGP support during transfer
+Write a tool to keep STDIN as is like cat except for the pgp parts
+where gpg does its job like this:
+
+gilles@petite:~ 73$ cat toto.txt | LANG= gpg --decrypt  --batch --no-tty  --passphrase=$P  --allow-multiple-messages  2>/dev/null 
+toto
+
+
+
+gilles@petite:~ 74$ cat toto.txt
+From: gilles@lflflf
+Subject: rrrrr
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+hQEOA+8dQNKixMtCEAP/Qr4TlMPXn72GOKQoPS4Hke3Bt8i5/Vp05u2sJrJopfV1
+MorlhUeMbpZwBEsT+FzQYe0QrBdeH9bg43pjS5UJ83PK970By0hUQWXWprRRcmYC
+XE3DtDXzaWsUguB79PGWNDP+OaUH2PaaapLUw6X3aePkFIk+CjNFBR961yAchUED
+/2hSA6exyLuzWq9BUvU7Iqvei3l+6wZAnWnFbUNloqOR6H92lPTFVhSQj/TK3uxa
+WMlb19SMvXuSMWxaIhCmTKD9uXV3sXptshMSkne7OGTu/RWdwEQhQCQdmMBnBz0e
+9btnB/3brQXchfvsjL6XCowUBzB+w3mdcXeM3Hps7KJ/0kABl8L3KDw0tS92KpGo
+dtiykQebYl/et8gfqemxzOwvakaAzattU75BAPwcNJo2jU9fMdjDxgGntUweJOpT
+z0rF
+=bya7
+-----END PGP MESSAGE-----
+
+Bye!
+
+
+SUGGESTED 2023_05_23 by Michael Orlitzky
+Change default tmpdir location to $HOME/tmp/ or $HOME/
+https://github.com/imapsync/imapsync/issues/399
+
+
+SUGGESTED 2023_05_05 by jotzet79
+https://github.com/imapsync/imapsync/issues/392
+Bug: --password1=secret prints --password1=secret MASKED
+     Fix sub mask_password_value
+     
+SUGGESTED 2023_03_01 by Gilles
+Update INSTALL.d/INSTALL.Darwin.txt
+Look what the command line "uname -m" gives (source https://en.wikipedia.org/wiki/Uname)
+and then use the imapsync binary 
+
+arm64  => imapsync_bin_Darwin_x86_64 on Mac Ventura, Monterey, Big Sur
+x86_64 => imapsync_bin_Darwin_x86_64 on Mac Catalina, Mojave, High Sierra, Sierra, El Capitan, Yosemite, Mavericks
+i386   => imapsync_bin_Darwin_i386   on Mac Snow Leopard
+
+
+SUGGESTED 2023_03_23 by Ian Murphy 
+A note or bugfix
+A bug located in the underlying Perl module Mail/IMAPClient.pm
+with the rare and special \ separator (use by Mac servers usually)
+
+Bug:
+  imapsync.exe --folderrec "7901-7910" ...
+only selects the folder 7901-7910
+while
+  imapsync.exe --folderrec "7901-7910\*" 
+selects the whole hierarchy of 7901-7910
+
+
+SUGGESTED 2022_09_24 by jayhasgin
+Add a --folderfirstrec option.
+https://github.com/imapsync/imapsync/issues/356
+
+SUGGESTED 2022_09_20 Urumasi 
+https://github.com/imapsync/imapsync/issues/354
+Use IO::Socket::IP instead of IO::Socket::INET6, remove IO::Socket::INET6
 
 SUGGESTED 2022_07_22 by Flavio
 Have a parameter to reconnect in case of failure
@@ -67,7 +171,6 @@ In order to avoid useless headaches from --regexmess, add
 --regexbody
 
 
-
 SUGGESTED 2021_01_26 by Gilles and Martin L. R. @duelhost.dk
 I am trying to move some e-mail using imapsync but the domain I'm moving 
 to have the Danish "ø"-character which it doesn't seem like imapsync can handle.
@@ -88,9 +191,12 @@ to still allow imap with imapsync. It already works but it is an old account.
 It looks like new O365 accounts are less likely to allow basic LOGIN imap
 with a password.
 
-SUGGESTED 2020_12_11 byTimo Smit 
+SUGGESTED 2020_12_11 by Timo Smit 
 Allow the syntax --host1 "example.com/Sent"
-to sync only the Sent folder.
+to sync the Sent folder recursively.
+Well, what to do when the folder separator is the dot character .
+Solution: syntax --host1 "example.com/INBOX.Sent"
+
 
 SUGGESTED 2020_11_30 by Gilles
 Add a FAQ.Invalid_Argument.txt
@@ -148,6 +254,9 @@ the mails from "Sent/2017" on Host 1 are transferred to "Sent/2017/INBOX" on Hos
 
 ==============================================================================
 OAUTH2 requests
+
+Last Thunderbird list
+https://web.archive.org/web/20231218111748/https://hg.mozilla.org/comm-central/file/tip/mailnews/base/src/OAuth2Providers.jsm
 
 Readings
 https://developers.google.com/identity/protocols/oauth2
@@ -512,9 +621,15 @@ SUGGESTED 2016_06_13 by David Carter
 ` $command < $input_tmpfile > $output_tmpfile 2> $error_tmpfile `
 
 
-SUGGESTED 2016_06_22 by Gilles
+SUGGESTED 2016_06_22 by Gilles and, before in 2009, Rick Romero
 Add  --quiet mode
 Make --quiet mode being switched by a signal
+Add Rick Romero patch 
+févr. 15  2009 W/patches/imapsync.patch_rick_romero
+with
+--quiet   No output at all
+--showstats  intended for use with --quiet
+
 
 SUGGESTED 2016_06_12 by Gilles
 Fix many perlcritic, all?
@@ -700,10 +815,6 @@ work. Cyrus uses c and d, Dovecot uses k and x instead."
 Peer Heinlein.
 
 Add more information about skipped messages.
-
-Add Rick Romero patch with
---quiet   No output at all
---showstats  intended for use with --quiet
 
 Take a look at Mail::IMAPTalk
 Simon Bertrang said "way better performance, less problems, easier to use and no

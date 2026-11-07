@@ -1,12 +1,12 @@
 #!/bin/cat
-$Id: FAQ.Release_Checklist.txt,v 1.27 2022/09/16 05:35:27 gilles Exp gilles $
+$Id: FAQ.Release_Checklist.txt,v 1.39 2025/09/12 12:52:23 gilles Exp gilles $
 
 This documentation is also available online at
 https://imapsync.lamiral.info/FAQ.d/
 https://imapsync.lamiral.info/FAQ.d/FAQ.Release_Checklist.txt
 
 =======================================================================
-               Imapsync developer notes
+               Imapsync developer(s)* notes
 =======================================================================
 
 
@@ -14,40 +14,65 @@ Checklist before making a new release:
 
 - Make "imapsync --tests" pass on Linux
 - Make "imapsync --tests" pass on Mac
-- Make "imapsync --tests" pass on Windows 32 bits
 - Make "imapsync --tests" pass on Windows 64 bits
 
-make linuxtests 
-make win32tests
+make linuxtests
 make win64tests 
 make mactests
 
 or 
 
-make -j linuxtests win32tests win64tests mactests
+make -j linuxtests win64tests mactests
 
 - Make "imapsync --testslive" pass on Linux
 - Make "imapsync --testslive" pass on Mac
 
+- Make "imapsync --testslive" pass on Windows are already done by "make win64tests"
 
-make linuxtestslive mactestslive mactestslive6
+
+make mactestslive mactestslive6
 
 
-- Add a new section in S/news.shtml reading "rlog imapsync"
+make ChangeLog
+
+- Add a new section in S/news.shtml reading "more ChangeLog".
+
+
+- Track any new Perl module dependency with the command:
+
+  diff ../prepa_dist/imapsync-2.290/imapsync imapsync | egrep '^[<>] use'
+  
+  
 - In case of a new dependency, add it to all the INSTALL/* files.
 - Generate the README
 
 make doc
 
 - Run a spell checker on the README
+
+  pod2text --loose --width=760  imapsync > README_for_grammarly.txt
+
+- Copy/Paste the README_for_grammarly.txt to https://app.grammarly.com/
+- Fix the text directly in imapsync, not only grammarly.
 - Read the README again slowly. Fix all issues, all.
 - Read the OPTIONS section of README and read it very slowly
 - Read slowly README_Windows.txt
 - Read slowly the TUTORIAL_Unix file in html
+- Read INSTALL.ANY.txt
 
 - Make "rcsdiff imapsync" give nothing relevant and exit 0
 
 - make ci pass.
+
+- make the binaries.
+
+make deb
+
+make docker_build
+
+make mac win 
+
+make mac_i386 mac_x86_64 
 
 - Review the newsletter by running:
     m4 -P W/ml_announce.in.txt
@@ -65,11 +90,15 @@ make doc
 - /X verify under noscript with firefox
 - /X verify under private with chrome
 
-- Check the binaries imapsync.exe imapsync_32bit.exe with
+- Check the binary imapsync.exe with
   https://www.virustotal.com/
   https://www.metadefender.com/
 
+- Update the documentation 
+  https://imapsync.lamiral.info/FAQ.d/FAQ.Virus.txt
 
+
+- make biz test nytprof cover crit
 - make dist
 - verify on Windows the zip extraction and simple execution of imapsync_example.bat
 - verify binary version matches imapsync script version
@@ -78,3 +107,6 @@ make doc
 
 =======================================================================
 =======================================================================
+
+* I'm the only developer since 2001, maybe one day...
+

@@ -42,10 +42,11 @@ If you are very interrested in those projects, don't hesitate to solicit me!
 </p>
 
 <ul>
-<li><b>Roadmap</b>: Build a docker image including everything, to have a complete online /X in a single command.</li>
-<li><b>Roadmap</b>: Or better: Include a webserver in imapsync to have an online /X integrated. (NB: proof of concept already coded and working)</li>
+<li><b>Roadmap</b>: Include a webserver in imapsync to have an online /X integrated.</li>
+<li><b>Roadmap</b>: Integrate oauth2 token generation inside imapsync, ie, put oauth_imap in imapsync.</li>
 <li><b>Roadmap</b>: Add the sync of multiple accounts inside imapsync itself instead of via an external shell script doing the loop from a csv file.</li>
 <li><b>Roadmap</b>: Build an online tool, like /X, for multiple accounts at once. (NB: proof of concept already coded and working)</li>
+<li><b>Done</b>: Build a <a href="https://hub.docker.com/r/gilleslamiral/imapsync">docker image</a> including everything, to have a complete online /X in a single command.</li>
 </ul>
 
 
@@ -58,7 +59,7 @@ If you are very interrested in those projects, don't hesitate to solicit me!
 
 <!--
 <ul>
-<li><b>2.230</b></li>
+<li><b>2.311</b></li>
 <li><b>General</b>: </li>
 
 <li><b>Dependencies added</b>:   None </li>
@@ -90,8 +91,116 @@ If you are very interrested in those projects, don't hesitate to solicit me!
 </ul>
 -->
 
+
 <ul>
-<li><b>2.229</b></li>
+<li><b>2.312</b> (2025/08/25)</li>
+
+<li><b>Enhancement</b>: Added many options to --extra, the ones allowed in CGI context.</li>
+
+<li><b>Bug fix</b>: All Gmail labels prints are now done with --debuglabels only.</li>
+
+<li><b>Enhancement</b>: Added inline help when the sync needs --delete2 again</li>
+
+<li><b>Enhancement</b>: Added a printing in firstline_or_string() saying if the output is the string itself or the first line of the file. Valuable in Docker context where --oauthaccesstoken 1or2 value being a file containing a string  or directly the  string is not obvious.</li>
+
+<li><b>Enhancement</b>: --sufolder2 FOO --delete2folders adds --delete2foldersonly m{FOO}. It facilitates syncing strictly to subfolders.</li>
+<li><b>Enhancement</b>: Added --testslive2 which is the reverse of --testslive. Useful to back and forth tests.</li>
+
+<li><b>Bug fix</b>: Added STARTTLS detection in sub connect_imap(), like in sub login_imap()</li>
+
+<li><b>Enhancement</b>: In --extra can be passed --delete2folders --delete1emptyfolders --delete2duplicates --delete2 --delete1 --expunge1 --expunge2 --syncduplicates --skipcrossduplicates --debugcrossduplicates --useheader --errorsmax --folder --oauthaccesstoken1 --oautha
+ccesstoken2 --ssl1 --ssl2 --tls1 --tls2 --compress1 --compress2 --debugimap --debugflags. I am not sure of this goodness...</li>
+
+<li><b>Usability</b>: Added --idatefromheader for --gmail2 and --gmail1 --gmail2, unless --noidatefromheader</li>
+
+<li><b>Refactoring</b>: Deglobalized @folderrec, now $mysync->{ folderrec }</li>
+
+<li><b>Docker context</b>: Logging is on by default.</li>
+</ul>
+
+<ul>
+<li><b>2.290</b> (2024/08/20)</li>
+
+<!--
+diff ../prepa_dist/imapsync-2.264/imapsync imapsync | egrep '^[<>] use'
+-->
+
+<li><b>Dependencies added</b>:   None </li>
+<li><b>Dependencies removed</b>: None </li>
+
+
+<li><b>Usability</b>: new values for Gmail, hoping they're ok.
+<ul>
+<li>--gmail1  implies --maxbytespersecond 300_000 --maxbytesafter 3_000_000_000</li>
+<li>--gmail2  implies --maxbytespersecond 300_000 --maxbytesafter 3_000_000_000</li>
+<li>--gmail1 --gmail2 implies also --maxbytespersecond 300_000 --maxbytesafter 3_000_000_000</li>
+</ul>
+</li>
+
+<li><b>Enhancement</b>: Added the syntax --host1 imap.foo:1234/bar/truc equivalent to --host1 imap.foo --port1 1234 --folderrec bar/truc</li>
+<li><b>Enhancement</b>: Added the syntax --host2 imap.foo:1234/bar/truc equivalent to --host2 imap.foo --port2 1234 --subfolder2 bar/truc</li>
+<li><b>Enhancement</b>: Added tom@mklab patch to have --oauthrefreshcmd1 str : An optional script to call, to refresh the host1 access token before each authentication. Added also --oauthrefreshcmd2 str</li>
+<li><b>Enhancement</b>: Allow  --exitonload in normal context, ie, command line.</li>
+<li><b>Enhancement</b>: Now the ssl check is done systematically on the port given by --port1 and --port2 and allow an automatic connection in ssl. This way, options --ssl1 and --ssl2 are no longer mandatory when using ports different than the usual ones, 143 and 993.</li>
+<li><b>Enhancement</b>: Added the option --extra that allows to add options in the UI like in the command line.</li>
+<li><b>Enhancement</b>: Now logging by default in Docker+CGI context. This allows the "tail -f" mechanism with /servimapsync when two same syncs are requested in parallel.</li>
+<li><b>Enhancement</b>: Added an early debugsleep() call to debug timeout with /servimapsync</li>
+<li><b>Enhancement</b>: Added in final stats the number of folders deleted on host2, if any.</li>
+<li><b>Enhancement</b>: Added exit value 121 when most errors are SEARCH errors.</li>
+
+
+<li><b>Usability</b>: Now --subfolder2 FOO implies --exclude FOO to avoid subfoldering recursion.</li>
+<li><b>Usability</b>: Options --gmail1 --gmail2 now implies --folderlast for  '[Gmail]/Sent Mail' '[Gmail]/Important' '[Gmail]/Starred' '[Gmail]/Drafts' '[Gmail]/Trash' '[Gmail]/Spam' '[Gmail]/Chats' '[Gmail]/All Mail', in this order.</li>
+<li><b>Usability</b>: Logging is on with --log, off with --nolog, on in Docker+CGI context, off in Docker only context, on otherwise.</li>
+
+
+<li><b>Bug fix</b>: Button "Abort!" now working in Docker+CGI context. Added a pid file in that context.</li>
+<li><b>Bug fix</b>: Now detect errors in SEARCH command given by --search.</li>
+
+<li><b>Refactoring</b>: 2151 unit tests.</li>
+
+</ul>
+
+<ul>
+<li><b>2.264</b> (2023/10/17)</li>
+
+<!--
+diff ../prepa_dist/imapsync-2.229/imapsync imapsync | egrep '^[<>] use'
+--> 
+
+<li><b>Dependencies added</b>: Perl module Digest::SHA</li>
+<li><b>Dependencies removed</b>: Perl module IO::Socket::INET6</li>
+
+<li><b>Enhancement</b>: It is now possible to check login with one side. Example: imapsync --host1 test1.lamiral.info --user1 test1 --password1 secret1</li>
+<li><b>Enhancement</b>: Office365 OAUTH2 modern authentication <a href="https://imapsync.lamiral.info/oauth2/oauth2_office365/README.txt">supported</a> with an <a href="https://imapsync.lamiral.info/oauth2/">external script</a>.</li>
+
+<li><b>Bug fix</b>: Reread oauth2 files upon disconnections.</li>
+<li><b>Bug fix</b>: Options --password1 and --password2 are no longer required when --oauthaccesstoken1 and --oauthaccesstoken2 are used, respectively. (release 2.261 was buggy on this, not 2.264)</li>
+<li><b>Bug fix</b>: Options --user1 and --user2 are no longer required when --oauthdirect1 and --oauthdirect2 are used, respectively. (release 2.261 was buggy on this, not 2.264)</li>
+
+
+
+<li><b>Refactoring</b>: 2065 unit tests.</li>
+<li><b>Refactoring</b>: 200 functionnal tests.</li>
+
+<li><b>Security</b>: Changed the default temporary directory. Now, the temporary directory taken from --tmpdir or $HOME/tmp or current directory, in order if defined (instead of /tmp on Linux) CVE-2023-34204 <br/>
+  See <a href="https://nvd.nist.gov/vuln/detail/CVE-2023-34204">https://nvd.nist.gov/vuln/detail/CVE-2023-34204</a><br/>
+  and also <a href="https://github.com/imapsync/imapsync/issues/399">https://github.com/imapsync/imapsync/issues/399</a><br/>
+  I did not change the default tmpdir in the CGI context because /var/tmp/imapsync_hash is written only if it doesn't exist
+  and /var/tmp/imapsync_cgi/ is created under the supervision of an admin. And I am lazy to change all my hosts for now.
+  </li>
+
+
+<li><b>Portability</b>: removed "use IO::Socket::INET6 ;"</li>
+
+<li><b>CGI context</b>: CGI context. Exit with a "503 Service Unavailable" when no disk space is available.</li>
+<li><b>CGI context</b>: Now the logfile name can only be composed with characters a-zA-Z0-9_-</li>
+
+</ul>
+
+
+<ul>
+<li><b>2.229</b> (2022/09/14)</li>
 <li><b>General</b>: </li>
 
 <li><b>Dependencies added</b>:   Proc::ProcessTable </li>
@@ -115,7 +224,7 @@ If you are very interrested in those projects, don't hesitate to solicit me!
 
 
 <ul>
-<li><b>2.200</b></li>
+<li><b>2.200</b> (2022/04/04)</li>
 <li><b>Dependencies removed</b>: None </li>
 <li><b>Dependencies added</b>:   None </li>
 
@@ -146,7 +255,7 @@ If you are very interrested in those projects, don't hesitate to solicit me!
 
 
 <ul>
-<li><b>2.178</b></li>
+<li><b>2.178</b> (2022/01/12)</li>
 
 <li><b>Dependencies removed</b>: None </li>
 <li><b>Dependencies added</b>: Perl module Compress::Zlib</li>
@@ -202,7 +311,7 @@ If you are very interrested in those projects, don't hesitate to solicit me!
 
 
 <ul>
-<li><b>2.140</b></li>
+<li><b>2.140</b> (2021/07/05)</li>
 <li><b>General</b>: New release numbering from 1.999 directly to 2.100; I want to avoid 1.1000 and sorting issues in directory listing.</li>
 <li><b>Dependencies removed</b>: None</li>
 <li><b>Dependencies added</b>: None</li>
@@ -276,10 +385,8 @@ Exit value 112 (EXIT_WITH_ERRORS_MAX) is now replaced by the most common error e
 
 </ul>
 
-
-
 <ul>
-<li><b>1.977</b></li>
+<li><b>1.977</b> (2019/12/23)</li>
 <li><b>Dependencies removed</b>: None.</li>
 <li><b>Dependencies added</b>: Perl modules Encode::IMAPUTF7</li>
 
@@ -327,9 +434,6 @@ Exit value 112 (EXIT_WITH_ERRORS_MAX) is now replaced by the most common error e
                         It is a preparation to a homemade web server to serve on imapsync as a cgi and
                         get free from Apache or a complicated web server stuff configuration.
 </li>
-
-
-
 </ul>
 
 <ul>
@@ -1068,7 +1172,7 @@ by ignoring PERMANENTFLAGS (Exchange tests)</li>
 <!--#config timefmt="%D" -->
 <!--#config timefmt="%A %B %d, %Y" -->
 <b>This document last modified on <!--#echo var="LAST_MODIFIED" --></b>
-($Id: news.shtml,v 1.87 2022/09/15 08:42:40 gilles Exp gilles $)<br />
+($Id: news.shtml,v 1.98 2025/08/27 23:44:27 gilles Exp gilles $)<br />
 <a  href="#TOP">Top of the page</a>
 </p>
 </body></html>

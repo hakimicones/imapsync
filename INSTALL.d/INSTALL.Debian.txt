@@ -1,5 +1,5 @@
 #!/bin/cat 
-# $Id: INSTALL.Debian.txt,v 1.38 2022/05/17 14:29:36 gilles Exp gilles $
+# $Id: INSTALL.Debian.txt,v 1.47 2025/09/12 13:29:26 gilles Exp gilles $
 
 This documentation is also located online at 
 https://imapsync.lamiral.info/INSTALL.d/
@@ -29,22 +29,42 @@ Type on a terminal:
 
 where x is any number between 0 and 9, x is minor and to be forgotten.
 
-
 First, a call to Debian packagers
 Why imapsync is not in Debian as a package?
 Imapsync used to be in Debian from 2005-04-25 (release 1.125) to 2011-01-25 (release 1.315).
 It could be in Debian nowadays, as always, my last words on this discussion were 
 "Do what you want, I promise I won't complain anymore about the fact imapsync is in Debian or not."
 https://lists.debian.org/debian-legal/2011/01/msg00058.html
+
 The Imapsync license is "No limits to do anything with this work and this license".
+I would be pleased to see imapsync brought back into Debian!
 So feel free!
+
 See also a more detailed story at
 https://lists.debian.org/debian-user/2016/11/msg00849.html
 
 
-=======================================================================
-  1) Installing imapsync on Debian 9 Stretch, 10 Buster, 11 Bullseye
-=======================================================================
+Since 2024, I maintain a Debian package, for an easy install on any Debian system.
+I build it with the command: 
+cd INSTALL.d/deb_building && sh build_imapsync_deb
+
+=========================================================================================
+  1) Installing imapsync on Debian 9 Stretch, 10 Buster, 11 Bullseye, Debian 12 Bookworm
+     using apt
+=========================================================================================
+
+
+cd /tmp/
+wget https://imapsync.lamiral.info/dist2/imapsync.deb
+sudo apt install ./imapsync.deb
+
+
+
+=========================================================================================
+  2) Installing imapsync on Debian 9 Stretch, 10 Buster, 11 Bullseye, Debian 12 Bookworm
+     manually
+=========================================================================================
+
 
 How to install imapsync dependencies on a Debian system?
 
@@ -52,7 +72,9 @@ The repositories are the classical ones, ie, a
 /etc/apt/sources.list file with:
 
 # Debian 12 Bookworm
-deb http://deb.debian.org/debian bookworm main contrib
+# /etc/apt/sources.list.d/debian.sources
+...
+Components: main contrib non-free-firmware non-free
 
 or
 
@@ -80,27 +102,28 @@ apt install -y            \
   libencode-imaputf7-perl     \
   libfile-copy-recursive-perl \
   libfile-tail-perl        \
+  libhttp-daemon-perl      \
+  libhttp-daemon-ssl-perl  \
+  libhttp-message-perl     \
   libio-socket-inet6-perl  \
   libio-socket-ssl-perl    \
   libio-tee-perl           \
   libhtml-parser-perl      \
   libjson-webtoken-perl    \
   libmail-imapclient-perl  \
+  libmodule-scandeps-perl  \
+  libnet-server-perl       \
+  libnet-dns-perl          \
   libparse-recdescent-perl \
   libproc-processtable-perl \
-  libmodule-scandeps-perl  \
   libreadonly-perl         \
   libregexp-common-perl    \
   libsys-meminfo-perl      \
   libterm-readkey-perl     \
   libtest-mockobject-perl  \
-  libtest-pod-perl         \
   libunicode-string-perl   \
   liburi-perl              \
   libwww-perl              \
-  libtest-nowarnings-perl  \
-  libtest-deep-perl        \
-  libtest-warn-perl        \
   make                     \
   time                     \
   cpanminus
@@ -134,6 +157,15 @@ Check the dependencies and print also the basic example:
 Perform a live test showing imapsync job:
 
   ./imapsync --testslive
+
+To get rid of the fake messages
+DEBUG: .../IO/Socket/SSL.pm:1177: global error: Undefined SSL object
+(See https://imapsync.lamiral.info/FAQ.d/FAQ.SSL_errors.txt)
+then update the Perl module IO::Socket::SSL release >= 2.073
+with the commands:
+
+  cpanm --test-only IO::Socket::SSL
+  cpanm             IO::Socket::SSL
 
 Now install imapsync on the system (need root privileges again):
 
@@ -232,7 +264,7 @@ go to the section "2) After installing the dependencies" above.
 
 How to install imapsync dependencies on a Debian system?
 
-You need root privilege to run the commands.
+You need root priviledge to run the commands.
 
 The first command installs standard Debian packages:
 

@@ -1,4 +1,4 @@
-$Id: FAQ.Logfile.txt,v 1.2 2021/07/23 12:27:31 gilles Exp gilles $
+$Id: FAQ.Logfile.txt,v 1.4 2025/09/12 12:52:23 gilles Exp gilles $
 
 This documentation is also available online at
 https://imapsync.lamiral.info/FAQ.d/
@@ -36,6 +36,11 @@ I[16-Jul-2021 12:04:15 +0000] = Internal date
 
 Usually this error doesn't appear on next runs, at least not for the 
 same messages. So rerun imapsync until all messages are synced.
+
+If the same error persists on every run, try to sync the message with
+another email tool like Thunderbird. Find the message from its size
+and its flags and its internal date.
+
 
 ======================================================================
 ======================================================================

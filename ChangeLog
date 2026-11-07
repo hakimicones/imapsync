@@ -1,17 +1,405 @@
 
 RCS file: RCS/imapsync,v
 Working file: imapsync
-head: 2.229
+head: 2.314
 branch:
 locks: strict
-	gilles: 2.229
+	gilles: 2.314
 access list:
 symbolic names:
 keyword substitution: kv
-total revisions: 1129;	selected revisions: 1129
+total revisions: 1214;	selected revisions: 1214
 description:
 ----------------------------
-revision 2.229	locked by: gilles;
+revision 2.314	locked by: gilles;
+date: 2025/09/23 16:55:17;  author: gilles;  state: Exp;  lines: +92 -63
+Bugfix. Refactored make_valid_directory()
+----------------------------
+revision 2.313
+date: 2025/09/12 05:00:02;  author: gilles;  state: Exp;  lines: +149 -79
+Renamed sub do_valid_directory() to make_valid_directory()
+rewrote enterely make_valid_directory(); now add a chmod 755 if needed.
+----------------------------
+revision 2.312
+date: 2025/08/25 22:40:36;  author: gilles;  state: Exp;  lines: +116 -111
+Grammarly
+----------------------------
+revision 2.311
+date: 2025/08/20 05:35:10;  author: gilles;  state: Exp;  lines: +59 -22
+Splited sub remove_tmp_files() in sub remove_pidfile() and sub remove_abortfile()
+----------------------------
+revision 2.310
+date: 2025/08/18 22:05:01;  author: gilles;  state: Exp;  lines: +41 -38
+Just syntaxic sugar.
+----------------------------
+revision 2.309
+date: 2025/08/17 15:59:05;  author: gilles;  state: Exp;  lines: +18 -8
+Added inline help when the sync needs --delete2 again
+----------------------------
+revision 2.308
+date: 2025/07/16 12:25:48;  author: gilles;  state: Exp;  lines: +39 -73
+Bugfix. Allow space in --host imap.foo.kk:114433/co co/cucu/ 
+Refactor. Renamed random_string() to generate_a_random_string()
+2176 unit tests.
+----------------------------
+revision 2.307
+date: 2025/06/21 13:29:09;  author: gilles;  state: Exp;  lines: +82 -68
+Bugfix. All Gmail labels prints now done with --debuglabels only.
+----------------------------
+revision 2.306
+date: 2025/04/22 21:25:23;  author: gilles;  state: Exp;  lines: +35 -28
+Added a printing in firstline_or_string() saying if the output is the string itself or the first line of the file.
+----------------------------
+revision 2.305
+date: 2025/04/19 22:59:18;  author: gilles;  state: Exp;  lines: +67 -12
+Added many options to --extra, the ones allowed in CGI context.
+----------------------------
+revision 2.304
+date: 2025/04/19 20:35:43;  author: gilles;  state: Exp;  lines: +21 -14
+Added STARTTLS detection in sub connect_imap(), like in sub login_imap()
+----------------------------
+revision 2.303
+date: 2025/02/24 15:52:54;  author: gilles;  state: Exp;  lines: +163 -29
+Enhancement. --sufolder2 FOO --delete2folders adds --delete2foldersonly m{FOO}. It facilitates syncing strictly to subfolders.
+----------------------------
+revision 2.302
+date: 2024/12/11 13:27:23;  author: gilles;  state: Exp;  lines: +29 -11
+Added --minsize --maxsize --maxage --minage --search --search1 --search2 to get_options_from_string() and get_options_cgi()
+  meaning they are usable online.
+----------------------------
+revision 2.301
+date: 2024/11/27 23:20:17;  author: gilles;  state: Exp;  lines: +43 -43
+New API for fix_Inbox_INBOX_mapping()
+----------------------------
+revision 2.300
+date: 2024/11/27 22:43:20;  author: gilles;  state: Exp;  lines: +17 -16
+Shorter presentation.
+----------------------------
+revision 2.299
+date: 2024/11/14 13:01:29;  author: gilles;  state: Exp;  lines: +222 -195
+Refactoring. Deglobalized $fixcolonbug, $create_folder_old, $useuid, $debugcache, $cacheaftercopy, $idatefromheader, $syncinternaldates, $disarmreadreceipts, \$fixInboxINBOX
+----------------------------
+revision 2.298
+date: 2024/11/10 11:11:18;  author: gilles;  state: Exp;  lines: +158 -122
+Deglobalized $prefix1, $prefix2, $pipemesscheck, $help, $nb_msg_skipped_dry_mode, $checkmessageexists, $fetch_hash_set
+Added --testslive2 which is the reverse of --testslive. Useful to back and forth tests.
+----------------------------
+revision 2.297
+date: 2024/10/28 18:33:32;  author: gilles;  state: Exp;  lines: +94 -73
+Deglobalized  $minsize, $maxage, $minage
+2156 unit tests
+----------------------------
+revision 2.296
+date: 2024/10/22 20:31:40;  author: gilles;  state: Exp;  lines: +10 -13
+Refactoring. Deglobalized $search
+----------------------------
+revision 2.295
+date: 2024/10/16 21:08:12;  author: gilles;  state: Exp;  lines: +13 -13
+Refactoring. typo about $sync->{ folderrec }
+----------------------------
+revision 2.294
+date: 2024/10/16 21:04:45;  author: gilles;  state: Exp;  lines: +58 -54
+Usability. Always log by default, even in Docker context.
+Refactoring. Deglobalized @folderrec, now $mysync->{ folderrec }
+----------------------------
+revision 2.293
+date: 2024/10/15 20:39:10;  author: gilles;  state: Exp;  lines: +21 -13
+Added in --extra the possibility of --delete2folders --delete1emptyfolders --delete2duplicates --delete2 --delete1
+----------------------------
+revision 2.292
+date: 2024/10/15 16:13:53;  author: gilles;  state: Exp;  lines: +98 -112
+CGI context. Now --useheader can be set in CGI context.
+Bugfix. Final statistic are printed when imapsync exits because of too many errors.
+Enhancement. In --extra can be passed --expunge1 --expunge2 --syncduplicates --skipcrossduplicates --debugcrossduplicates --useheader --errorsmax --folder --oauthaccesstoken1 --oauthaccesstoken2 --ssl1 --ssl2 --tls1 --tls2 --compress1 --compress2 --debugimap --debugflags. I am not sure of this goodness....
+----------------------------
+revision 2.291
+date: 2024/10/01 11:36:21;  author: gilles;  state: Exp;  lines: +71 -32
+Added printing of REQUEST_URI in CGI context.
+Added unit test 'regexmess: date replaced by first received date'
+Added --idatefromheader for --gmail2 and --gmail1 --gmail2, unless --noidatefromheader
+Better debug output in sub get_options_cmd()
+----------------------------
+revision 2.290
+date: 2024/08/20 10:37:23;  author: gilles;  state: Exp;  lines: +116 -117
+--gmail1  implies --maxbytespersecond 300_000 --maxbytesafter 3_000_000_000
+--gmail2  implies --maxbytespersecond 300_000 --maxbytesafter 3_000_000_000
+--gmail1 --gmail2 implies also --maxbytespersecond 300_000 --maxbytesafter 3_000_000_000
+Let's try it.
+----------------------------
+revision 2.289
+date: 2024/08/18 21:54:28;  author: gilles;  state: Exp;  lines: +87 -18
+Bugfix. Log is on is Docker+CGI context, off in Docker only context, on with --log, off with --nolog, on otherwise.
+----------------------------
+revision 2.288
+date: 2024/08/04 21:34:51;  author: gilles;  state: Exp;  lines: +13 -12
+Bugfix. sub setlog myprint calls replaced by output()
+----------------------------
+revision 2.287
+date: 2024/08/04 21:12:59;  author: gilles;  state: Exp;  lines: +211 -138
+Added the option --extra that allows to add options in the UI like in the command line.
+2145 unit tests.
+----------------------------
+revision 2.286
+date: 2024/04/21 21:35:18;  author: gilles;  state: Exp;  lines: +50 -24
+Docker context. No logfile by default. Use --log to turn on logging on a logfile.
+----------------------------
+revision 2.285
+date: 2024/04/10 21:05:51;  author: gilles;  state: Exp;  lines: +42 -22
+Bugfix. Quit on heavy load was not set in CGI context.
+Enhancement. --gmail1 --gmail2 now implies --folderlast for  '[Gmail]/Sent Mail' '[Gmail]/Important' '[Gmail]/Starred' '[Gmail]/Drafts' '[Gmail]/Trash' '[Gmail]/Spam' '[Gmail]/Chats' '[Gmail]/All Mail', in this order.
+----------------------------
+revision 2.284
+date: 2024/03/15 05:51:31;  author: gilles;  state: Exp;  lines: +171 -92
+Bugfix. No exit on heavy load by default in normal context. Was introduced in revision 2.281
+Enhancement. Added the syntax --host1 imap.foo:1234/bar/truc equivalent to --host1 imap.foo --port1 1234 --folderrec bar/truc
+Enhancement. Added the syntax --host2 imap.foo:1234/bar/truc equivalent to --host2 imap.foo --port2 1234 --subfolder2 bar/truc
+Enhancement. Now the ssl check is done systematically on the port given by --port1 and --port2 and allow an automatic connection in ssl. This way, options --ssl1 and --ssl2 are no longer mandatory when using ports different than the usual ones, 143 and 993.
+----------------------------
+revision 2.283
+date: 2024/03/11 14:37:15;  author: gilles;  state: Exp;  lines: +138 -12
+Preparation to add the feature --host1 imap.foo.kk:1234/folderrec 
+2124 unit tests
+----------------------------
+revision 2.282
+date: 2024/02/27 15:49:33;  author: gilles;  state: Exp;  lines: +17 -11
+Applied https://github.com/imapsync/imapsync/pull/381/files
+----------------------------
+revision 2.281
+date: 2024/02/20 16:30:57;  author: gilles;  state: Exp;  lines: +11 -11
+Allow  --exitonload in normal context, ie, command line.
+----------------------------
+revision 2.280
+date: 2024/01/29 22:35:18;  author: gilles;  state: Exp;  lines: +10 -8
+typo
+----------------------------
+revision 2.279
+date: 2024/01/11 19:14:11;  author: gilles;  state: Exp;  lines: +36 -31
+Crit. Some perlcrit fixed.
+----------------------------
+revision 2.278
+date: 2024/01/07 19:10:15;  author: gilles;  state: Exp;  lines: +317 -157
+cosmetic with {
+----------------------------
+revision 2.277
+date: 2024/01/02 16:04:36;  author: gilles;  state: Exp;  lines: +25 -14
+Enhancement. Now --subfolder2 FOO implies --exclude FOO to avoid subfoldering recursion
+----------------------------
+revision 2.276
+date: 2023/12/26 17:37:14;  author: gilles;  state: Exp;  lines: +42 -11
+Bugfix. Pass --tests everywhere
+----------------------------
+revision 2.275
+date: 2023/12/25 23:19:00;  author: gilles;  state: Exp;  lines: +165 -118
+Bugfix. Now detect errors in SEARCH command given by --search. 
+Enhancement. Added exit value 121 when most errors are SEARCH errors.
+Changed all @_ to @ARG
+2093 uit tests.
+----------------------------
+revision 2.274
+date: 2023/12/22 13:04:51;  author: gilles;  state: Exp;  lines: +11 -11
+2 processors detected on petite this time...
+----------------------------
+revision 2.273
+date: 2023/12/12 16:15:43;  author: gilles;  state: Exp;  lines: +9 -9
+Added an early debugsleep to debug timeout with /servimapsync
+----------------------------
+revision 2.272
+date: 2023/12/11 13:47:56;  author: gilles;  state: Exp;  lines: +35 -26
+Bugfix. Now loging by default in Docker context. This allows the "tail -f" mechanism with /servimapsync when two same syncs are requested in parallel.
+----------------------------
+revision 2.271
+date: 2023/11/30 18:51:58;  author: gilles;  state: Exp;  lines: +110 -58
+Bugfix. Button "Abort!" now working in Docker+CGI context. Added a pid file in that context.
+2092 unit tests.
+----------------------------
+revision 2.270
+date: 2023/11/25 20:34:53;  author: gilles;  state: Exp;  lines: +301 -245
+Added in final stats the number of Folders deleted on host2
+Added in final stats the number of Folders failed to be deleted on host2, if any
+Refactoring. Deglobalized $delete2folders $delete2foldersonly $delete2foldersbutnot
+----------------------------
+revision 2.269
+date: 2023/10/27 12:50:09;  author: gilles;  state: Exp;  lines: +8 -8
+word
+----------------------------
+revision 2.268
+date: 2023/10/27 11:55:30;  author: gilles;  state: Exp;  lines: +8 -8
+gram
+----------------------------
+revision 2.267
+date: 2023/10/27 11:48:34;  author: gilles;  state: Exp;  lines: +28 -27
+Renamed option --oauthrefreshscript1 to --oauthrefreshcmd1 and --oauthrefreshscript2 to --oauthrefreshcmd1 (shorter)
+----------------------------
+revision 2.266
+date: 2023/10/26 15:53:01;  author: gilles;  state: Exp;  lines: +59 -17
+Added tom@mklab patch to have --oauthrefreshscript1 str : An optional script to call, to refresh the host1 access token before each authentication. And --oauthrefreshscript2 str
+----------------------------
+revision 2.265
+date: 2023/10/23 18:39:41;  author: gilles;  state: Exp;  lines: +13 -13
+Added charecter & in the filtered characters in sub filter_forbidden_characters()
+----------------------------
+revision 2.264
+date: 2023/10/17 11:09:25;  author: gilles;  state: Exp;  lines: +12 -14
+README part. --password1 and --user1 no more needed.
+----------------------------
+revision 2.263
+date: 2023/10/15 20:13:55;  author: gilles;  state: Exp;  lines: +11 -11
+Bugfix. tests_login_imap_oauth number of tests.
+----------------------------
+revision 2.262
+date: 2023/10/14 10:17:53;  author: gilles;  state: Exp;  lines: +205 -146
+Bugfix.  Moved Readonly $SSL_VERIFY_POLICY => IO::Socket::SSL::SSL_VERIFY_NONE above to make all ssl unit test pass.
+Bugfix. Change oauth2/ directory path to oauth2/oauth2_gmail/ in unit tests.
+Tests. Added tests to show the bug --oauthdirect without --user or without --password not reconnecting well.
+Bugfix. --oauthdirect is ok to reconnect without --user nor --password
+Bugfix. --oauthaccesstoken is is ok to reconnect without --password
+Cosmetic changes.
+2082 unit tests.
+----------------------------
+revision 2.261
+date: 2023/09/27 11:26:09;  author: gilles;  state: Exp;  lines: +10 -10
+Bugfix. typo on eleasecheck.
+----------------------------
+revision 2.260
+date: 2023/09/19 23:49:37;  author: gilles;  state: Exp;  lines: +8 -8
+Fakefix. Use Encode::find_encoding instead of find_encoding. Look at PAR::Packer -x needed even with -M Encode. Strange.
+----------------------------
+revision 2.259
+date: 2023/09/18 19:57:26;  author: gilles;  state: Exp;  lines: +76 -15
+temporary directory is --tmpdir or $HOME/tmp or current directory, in order if defined.
+----------------------------
+revision 2.258
+date: 2023/09/11 12:27:09;  author: gilles;  state: Exp;  lines: +104 -127
+Reviewed with Grammarly
+----------------------------
+revision 2.257
+date: 2023/08/29 23:51:58;  author: gilles;  state: Exp;  lines: +16 -14
+Bugfix. Docker context ignored --tmpdir https://github.com/imapsync/imapsync/issues/413
+----------------------------
+revision 2.256
+date: 2023/08/29 23:03:06;  author: gilles;  state: Exp;  lines: +41 -23
+Bugfix. Updated the README part to disambiguate the --ssl and --tls options.
+        Both are SSL/TLS. --ssl is imaps. --tls is STARTTLS behavior.
+----------------------------
+revision 2.255
+date: 2023/08/21 10:40:56;  author: gilles;  state: Exp;  lines: +48 -46
+Bugfix. tests_pipemess() failed under Docker context. Not sure this fix the issue.
+----------------------------
+revision 2.254
+date: 2023/08/20 21:41:09;  author: gilles;  state: Exp;  lines: +40 -44
+Replaced most "-e '/Dockerfile'" with skip_docker( )
+----------------------------
+revision 2.253
+date: 2023/08/18 20:29:32;  author: gilles;  state: Exp;  lines: +15 -15
+Docker context detection is now /Dockerfile instead of /.dockerenv
+----------------------------
+revision 2.252
+date: 2023/08/17 14:54:12;  author: gilles;  state: Exp;  lines: +31 -21
+Bugfix. Made tests pass. tests_login_imap_starttls tests_compress_starttls on ks5 and docker context
+----------------------------
+revision 2.251
+date: 2023/08/16 21:30:17;  author: gilles;  state: Exp;  lines: +243 -104
+Bugfix. --password1 and --password2 are no longer required when --oauthaccesstoken1 and --oauthaccesstoken2 are used, respectively.
+Bugfix. --user1 and --user2 are no longer required when --oauthdirect1 and --oauthdirect2 are used, respectively.
+Enhancement. It is now possible to check login with one side. Example: imapsync --host1 test1.lamiral.info --user1 test1 --password1 secret1
+----------------------------
+revision 2.250
+date: 2023/07/19 08:52:22;  author: gilles;  state: Exp;  lines: +99 -63
+Security. Changed the default tmpdir to $HOME/tmp (instead of /tmp on Linux) CVE-2023-34204
+  See https://nvd.nist.gov/vuln/detail/CVE-2023-34204
+  See https://github.com/imapsync/imapsync/issues/399
+  I did not changed the default in the CGI context because /var/tmp/imapsync_hash is written only if it doesn't exist
+  and /var/tmp/imapsync_cgi/ is created under the supervision of an admin.
+  and I am lazy to change all my hosts.
+
+Refactoring. Changed sub random_string()
+Added sub oauth2_code_verifier
+Added sub oauth2_code_challenge
+Began oauth2 integration.
+----------------------------
+revision 2.249
+date: 2023/06/01 11:55:14;  author: gilles;  state: Exp;  lines: +98 -87
+Made --tests pass under Windows
+Cosmetics
+----------------------------
+revision 2.248
+date: 2023/05/31 23:11:52;  author: gilles;  state: Exp;  lines: +9 -9
+no more $IO::Socket::SSL::DEBUG = 4
+----------------------------
+revision 2.247
+date: 2023/05/31 22:54:01;  author: gilles;  state: Exp;  lines: +79 -81
+Made --tests pass on macosx
+----------------------------
+revision 2.246
+date: 2023/05/31 21:36:11;  author: gilles;  state: Exp;  lines: +267 -113
+made --tests pass under Docker context.
+----------------------------
+revision 2.245
+date: 2023/05/30 17:53:34;  author: gilles;  state: Exp;  lines: +70 -70
+Made --tests pass after ks6ipv6.lamiral.info is down
+----------------------------
+revision 2.244
+date: 2023/04/27 11:14:39;  author: gilles;  state: Exp;  lines: +8 -8
+commented "use IO::Socket::INET6 ;"
+----------------------------
+revision 2.243
+date: 2023/04/25 08:05:58;  author: gilles;  state: Exp;  lines: +60 -14
+CGI context. Now the logfile can only be a-zA-Z0-9_-
+----------------------------
+revision 2.242
+date: 2023/04/16 17:04:48;  author: gilles;  state: Exp;  lines: +10 -10
+Bugfix. Changed diskspace test with mkdir instead of touch
+----------------------------
+revision 2.241
+date: 2023/04/16 14:55:49;  author: gilles;  state: Exp;  lines: +8 -8
+2020 unit tests.
+----------------------------
+revision 2.240
+date: 2023/04/16 14:52:58;  author: gilles;  state: Exp;  lines: +94 -13
+Bugfix. CGI context. Exit with a "503 Service Unavailable" when no disk space is available.
+----------------------------
+revision 2.239
+date: 2023/04/13 08:45:56;  author: gilles;  state: Exp;  lines: +8 -8
+CGI context. Max load from 1.5 to 1
+----------------------------
+revision 2.238
+date: 2023/04/06 14:00:33;  author: gilles;  state: Exp;  lines: +11 -11
+tests_cpu_number: on petite (Linux) => 2
+----------------------------
+revision 2.237
+date: 2023/04/06 12:34:33;  author: gilles;  state: Exp;  lines: +10 -10
+Back to 4 memory imapsync memory footprints left to the host as a quit criterium, 1 GB.
+----------------------------
+revision 2.236
+date: 2023/04/05 08:18:01;  author: gilles;  state: Exp;  lines: +9 -9
+CGI context. Max load from 2 to 1.5
+----------------------------
+revision 2.235
+date: 2023/03/30 09:03:44;  author: gilles;  state: Exp;  lines: +12 -12
+Bugfix. Made --tests pass.
+----------------------------
+revision 2.234
+date: 2023/03/30 08:34:06;  author: gilles;  state: Exp;  lines: +11 -11
+CGI context. Load 2 per cpu instead of load 1 max per cpu.
+CGI context. Memory threshold leaves 500 MB to the host instead of 1 GB.
+----------------------------
+revision 2.233
+date: 2023/03/01 16:20:38;  author: gilles;  state: Exp;  lines: +9 -8
+No ipv6 available on macstadium lent Mac mini G3D
+----------------------------
+revision 2.232
+date: 2023/03/01 12:09:58;  author: gilles;  state: Exp;  lines: +11 -8
+Comment about CGI memory threshold "leaves 4 memory imapsync memory footprints to the host, ie 1 GB free for anything else."
+----------------------------
+revision 2.231
+date: 2023/01/24 22:23:42;  author: gilles;  state: Exp;  lines: +12 -12
+moved load_modules()
+----------------------------
+revision 2.230
+date: 2023/01/24 14:36:04;  author: gilles;  state: Exp;  lines: +190 -119
+Bugfix. Reread oauth2 files upon disconnections
+----------------------------
+revision 2.229
 date: 2022/09/14 18:08:24;  author: gilles;  state: Exp;  lines: +16 -16
 Make pass "make linuxtests win32tests win64tests mactests"
 ----------------------------

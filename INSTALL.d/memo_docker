@@ -1,6 +1,6 @@
 #!/bin/sh
 
-# $Id: memo_docker,v 1.17 2022/04/04 14:46:21 gilles Exp gilles $
+# $Id: memo_docker,v 1.20 2024/08/06 19:42:38 gilles Exp gilles $
 
 echo imapsync_docker_timestamp_dockerfile
 imapsync_docker_timestamp_dockerfile()
@@ -11,12 +11,28 @@ imapsync_docker_timestamp_dockerfile()
 	ci -l -f -m"Changing timestamp to $DATE_CURRENT with imapsync_docker_timestamp_dockerfile" Dockerfile
 }
 
+echo imapsync_docker_copy_certificate
+imapsync_docker_copy_certificate()
+{
+    cp /etc/letsencrypt/live/docker.lamiral.info/privkey.pem   .
+    cp /etc/letsencrypt/live/docker.lamiral.info/fullchain.pem .
+}
+
 echo imapsync_docker_build
 imapsync_docker_build()
 {
-    docker build -t gilleslamiral/imapsync . \
+        imapsync_docker_copy_certificate
+        docker build --tag gilleslamiral/imapsync . \
+                && imapsync_docker_add_tag_version && echo Build SUCCEEDED || echo Build FAILED
+}
+
+echo imapsync_docker_build_local
+imapsync_docker_build_local()
+{
+    docker build --file Dockerfile.local --tag gilleslamiral/imapsync . \
         && imapsync_docker_add_tag_version && echo Build SUCCEEDED || echo Build FAILED
 }
+
 
 echo imapsync_docker_version
 imapsync_docker_version()
@@ -28,6 +44,30 @@ echo imapsync_local_docker_version
 imapsync_local_docker_version()
 {
         docker run gilleslamiral/imapsync /imapsync --version
+}
+
+echo imapsync_local_docker
+imapsync_local_docker()
+{
+        docker run gilleslamiral/imapsync /imapsync  "$@"
+}
+
+echo imapsync_local_docker_tests
+imapsync_local_docker_tests()
+{
+        docker run gilleslamiral/imapsync /imapsync --tests "$@"
+}
+
+echo imapsync_local_docker_testslive
+imapsync_local_docker_testslive()
+{
+        docker run gilleslamiral/imapsync /imapsync --testslive "$@"
+}
+
+echo imapsync_local_docker_testslive6
+imapsync_local_docker_testslive6()
+{
+        docker run gilleslamiral/imapsync /imapsync --testslive6 "$@"
 }
 
 echo imapsync_docker_add_tag_version
@@ -136,3 +176,18 @@ imapsync_docker_upload()
 }
 
 
+echo imapsync_docker_servimapsync
+imapsync_docker_servimapsync()
+{
+cat <<'EOF'
+docker run -p 8080:8080 -p8443:8443 \
+        -v `pwd`/privkey.pem:/var/tmp/privkey.pem \
+        -v `pwd`/fullchain.pem:/var/tmp/fullchain.pem \
+        --hostname ks5_docker \
+        gilleslamiral/imapsync /servimapsync
+
+docker run -p 8080:8080 -p8443:8443 \
+        --hostname ks5_docker \
+        gilleslamiral/imapsync /servimapsync
+EOF
+}

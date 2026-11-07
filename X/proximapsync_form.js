@@ -1,8 +1,15 @@
 
-// $Id: proximapsync_form.js,v 1.2 2022/05/04 00:40:46 gilles Exp gilles $
+// $Id: proximapsync_form.js,v 1.14 2025/06/14 13:16:10 gilles Exp gilles $
 
 /*jslint browser: true*/ /*global  $*/
 
+
+/* 
+1) How the hell is structured this code?
+2) What is its behavior?
+
+
+*/
 
 $(document).ready(
     function ()
@@ -308,12 +315,11 @@ $(document).ready(
         return ;
     } ;
 
+
     var refreshLog = function refreshLog( xhr )
     {
         var eta_obj ;
         var eta_str ;
-
-        $( "#imapsync_current" ).load( "imapsync_current.txt" ) ;
         
         eta_obj = extract_eta( xhr ) ;
 
@@ -330,7 +336,7 @@ $(document).ready(
         }
         else
         {
-                eta_str = eta_obj.str + " (refresh every " + refresh_interval_s + " s)" ;
+                eta_str = eta_obj.str + " (refresh done every " + refresh_interval_s + " s)" ;
                 eta_str = eta_str.replace(/(\r\n|\n|\r)/gm, "") ; // trim newlines
                 //$("#tests").append( "refreshLog  eta_str: " + eta_str + "\n" ) ;
                 $( "#progress-txt" ).text( eta_str ) ;
@@ -342,29 +348,29 @@ $(document).ready(
 
     var handleRun = function handleRun(xhr, timerRefreshLog)
     {
-
+        const time = new Date();
         $("#console").text(
             "Status: " + xhr.status + " " + xhr.statusText + "\n"
-            + "State: " + readyStateStr[xhr.readyState] + "\n" ) ;
+            + "State: " + readyStateStr[xhr.readyState] + "\n" 
+            + "Time: " + time + "\n" 
+            ) ;
 
-        if ( xhr.readyState === 4 ) {
-        // var headers = xhr.getAllResponseHeaders();
-        // $("#console").append(headers);
-        // $("#console").append("See the completed log\n");
-        clearInterval( timerRefreshLog ) ;
-        refreshLog( xhr ) ; // a last time
-        // back to enable state for next run
-        $("#bt-sync").prop("disabled", false) ;
-        
-        $( "#imapsync_current" ).load( "imapsync_current.txt" ) ;
-
+        if ( xhr.readyState === 4 )
+        {
+                // var headers = xhr.getAllResponseHeaders();
+                // $("#console").append(headers);
+                // $("#console").append("See the completed log\n");
+                clearInterval( timerRefreshLog ) ;
+                refreshLog( xhr ) ; // a last time
+                // back to enable state for next run
+                $("#bt-sync").prop("disabled", false) ;
         }
     }
 
     var imapsync = function imapsync()
     {
         var querystring = $("#form").serialize() ;
-        $("#abort").text("\n\n") ; // clean abort console
+        $("#abort").text("\n\n\n") ; // clean abort console
         $("#output").text("Here comes the log!\n\n") ;
 
         if ( "imap.gmail.com" === $("#host1").val() )
@@ -411,10 +417,12 @@ $(document).ready(
 
     var handleAbort = function handleAbort( xhr )
     {
-
+        const time = new Date() ;
         $( "#abort" ).text(
             "Status: " + xhr.status + " " + xhr.statusText + "\n"
-            + "State: " + readyStateStr[xhr.readyState] + "\n\n" ) ;
+            + "State: " + readyStateStr[xhr.readyState] + "\n"
+            + "Time: " + time + "\n"
+            ) ;
 
         if ( xhr.readyState === 4 )
         {
@@ -651,7 +659,7 @@ $(document).ready(
             }
         }
     }
-    
+
     var sha256 = function sha256( string )
     {
             var hash = CryptoJS.SHA256( string ) ;
@@ -698,7 +706,6 @@ $(document).ready(
         $("#bt-sync").click(
             function ()
             {
-                $( "#imapsync_current" ).load( "imapsync_current.txt" ) ;
                 $("#bt-sync").prop("disabled", true) ;
                 $("#bt-abort").prop("disabled", false) ;
                 $("#progress-txt").text( "ETA: coming soon" ) ;
@@ -710,11 +717,9 @@ $(document).ready(
         $("#bt-abort").click(
             function ()
             {
-                $( "#imapsync_current" ).load( "imapsync_current.txt" ) ;
                 $("#bt-sync").prop("disabled", true);
                 $("#bt-abort").prop("disabled", true);
                 abort();
-                $( "#imapsync_current" ).load( "imapsync_current.txt" ) ;
             }
         );
 
@@ -749,23 +754,9 @@ $(document).ready(
             }
         ) ;
         
-        if ( "imapsync.lamiral.info" === location.hostname )
-        {
-                $( "#local_bandwidth" ).collapse( "show" ) ;
-                $( "#local_status_dbmon" ).collapse( "show" ) ;
-                $( "#local_status_hetrix" ).collapse( "show" ) ;
-                $( "#imapsync_advice_hours" ).collapse( "show" ) ;
-                $( "#imapsync_current" ).load( "imapsync_current.txt" ) ;
+
+        
         }
-        else if ( "lamiral.info" === location.hostname )
-        {
-                $( "#local_bandwidth" ).collapse( "show" ) ;
-                $( "#local_status_dbmon" ).collapse( "show" ) ;
-                $( "#local_status_hetrix" ).collapse( "show" ) ;
-                $( "#imapsync_advice_hours" ).collapse( "show" ) ;
-                $( "#imapsync_current" ).load( "imapsync_current.txt" ) ;
-        }
-    }
 
         var tests_bilan = function tests_bilan( nb_attended_test )
         {

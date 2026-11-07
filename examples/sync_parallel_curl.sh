@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# $Id: sync_parallel_curl.sh,v 1.2 2020/11/16 00:40:06 gilles Exp gilles $
+# $Id: sync_parallel_curl.sh,v 1.3 2023/10/14 12:56:46 gilles Exp gilles $
 
 # Example for imapsync massive migration on Unix systems.
 # See also http://imapsync.lamiral.info/FAQ.d/FAQ.Massive.txt
