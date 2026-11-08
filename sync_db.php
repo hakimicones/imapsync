@@ -1,7 +1,7 @@
 <?php
 
 $lockFile = '/tmp/imapsync_sync.lock';
-$lockMaxAge = 86400;  // 24h — expire un lock orphelin
+$lockMaxAge = 86400;
 
 if (file_exists($lockFile)) {
     $lockData = json_decode(@file_get_contents($lockFile), true);
@@ -12,7 +12,7 @@ if (file_exists($lockFile)) {
         echo "Sync already running (PID {$lockData['pid']}). Exiting.\n";
         exit(0);
     }
-    @unlink($lockFile);  // lock orphelin
+    @unlink($lockFile);
 }
 file_put_contents($lockFile, json_encode([
     'pid'  => getmypid(),
@@ -23,11 +23,34 @@ register_shutdown_function(function() use ($lockFile) { @unlink($lockFile); });
 require '/etc/imapsync/secret.php';
 
 $host = "localhost"; $dbname = "mails_bd"; $user = "mails_bd";
-$pass = "A147z258e369=";  // à déplacer dans secret.php à terme
+$pass = "A147z258e369=";
+
+/**
+ * Retourne une connexion PDO vivante.
+ * Recrée la connexion si le serveur MySQL l'a fermée
+ * (attendu quand exec() dure des heures).
+ */
+function getPdo() {
+    global $host, $dbname, $user, $pass;
+    static $pdo = null;
+
+    if ($pdo === null) {
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+
+    try {
+        $pdo->query('SELECT 1');
+    } catch (PDOException $e) {
+        // Connexion morte → on la recrée
+        $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
+        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    }
+    return $pdo;
+}
 
 try {
-    $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $user, $pass);
-    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    $pdo = getPdo();
 } catch (PDOException $e) {
     die("Erreur connexion DB: " . $e->getMessage());
 }
@@ -35,7 +58,7 @@ try {
 $sql = "SELECT id, emails, password FROM emails WHERE etat=1";
 $stmt = $pdo->query($sql);
 
-$timeoutPerAccount = 3600;  // 1h max par compte — adaptez à la taille des boîtes
+$timeoutPerAccount = 3600;
 
 foreach ($stmt as $row) {
     $email = $row['emails'];
@@ -45,7 +68,6 @@ foreach ($stmt as $row) {
         continue;
     }
 
-    // Mot de passe via fichier temporaire protégé (invisible dans ps)
     $tmpPass = tempnam(sys_get_temp_dir(), 'imapsync_');
     chmod($tmpPass, 0600);
     file_put_contents($tmpPass, $password);
@@ -66,9 +88,15 @@ foreach ($stmt as $row) {
     }
 
     $msg = substr(implode("\n", $output), -60000);
+    $output = [];  // reset pour le compte suivant
 
-    $insert = $pdo->prepare("INSERT INTO sync_logs (email, error_code, error_message) VALUES (?, ?, ?)");
-    $insert->execute([$email, $return_var, $msg]);
+    try {
+        $pdo = getPdo();  // <-- ping + reconnexion si besoin
+        $insert = $pdo->prepare("INSERT INTO sync_logs (email, error_code, error_message) VALUES (?, ?, ?)");
+        $insert->execute([$email, $return_var, $msg]);
+    } catch (PDOException $e) {
+        error_log("DB insert failed for $email: " . $e->getMessage());
+    }
 
     echo "Compte: $email | Code: $return_var\n";
 }
